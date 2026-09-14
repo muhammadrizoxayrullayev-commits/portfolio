@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad | Creative Designer & Visual Artist Portfolio</title>
+  <meta name="description" content="Muhammad — Senior Graphic Designer, UI/UX va 3D Visual Artist. Tajribali dizaynerning shaxsiy portfoliosi, yutuqlari, loyihalari va QR-kod orqali kirish tizimi.">
+  <meta name="theme-color" content="#08080a">
+
+  <!-- Google Fonts: Syne & Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Canvas Background for fiery embers particles -->
+  <canvas id="embers-canvas" aria-hidden="true"></canvas>
+
+  <!-- Ambient Glow Blobs -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- Header Navigation -->
+  <header class="main-header" id="navbar">
+    <div class="header-container">
+      <a href="#hero" class="brand-logo" aria-label="Bosh sahifaga o'tish">
+        <span class="logo-symbol">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17 2L31 29H3L17 2Z" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M17 11L24 25H10L17 11Z" fill="url(#logo-grad)" opacity="0.8"/>
+            <circle cx="17" cy="18" r="3" fill="#ff5500"/>
+            <defs>
+              <linearGradient id="logo-grad" x1="17" y1="2" x2="17" y2="29" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#ff7700"/>
+                <stop offset="1" stop-color="#ff2200"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <div class="brand-text">
+          <span class="brand-name">RATAN</span>
+          <span class="brand-role">DESIGN</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-menu" id="nav-links">
+        <a href="#hero" class="nav-link active">HOME</a>
+        <a href="#about" class="nav-link">ABOUT</a>
+        <a href="#achievements" class="nav-link">ACHIEVEMENTS</a>
+        <a href="#works" class="nav-link">WORK</a>
+        <a href="#qa-section" class="nav-link">Q&A</a>
+        <a href="#contact" class="nav-link">CONTACT</a>
+      </nav>
+
+      <!-- Right Action Group -->
+      <div class="header-actions">
+        <!-- QR Code Trigger Button -->
+        <button class="qr-nav-btn" id="open-qr-btn" aria-label="QR-kod orqali saytni ulashish">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <span>QR-KOD</span>
+        </button>
+
+        <!-- Lets Talk Glowing Button -->
+        <a href="#contact" class="lets-talk-btn">
+          <span>LETS TALK</span>
+          <span class="pulse-dot"></span>
+        </a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="mobile-toggle" id="mobile-nav-toggle" aria-label="Menyuni ochish">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero-section" id="hero">
+      <!-- Right Side Floating Vertical Accent Bar (from reference) -->
+      <aside class="hero-side-accent" aria-hidden="true">
+        <div class="glowing-orb orb-top"></div>
+        <span class="side-vertical-text">VISUALS THAT SPEAK</span>
+        <div class="glowing-orb orb-bottom"></div>
+        <div class="side-sub-badge">
+          <span>CREATING</span>
+          <strong>IMPACT THROUGH DESIGN</strong>
+        </div>
+      </aside>
+
+      <div class="hero-container">
+        <!-- Left Column: Hero Text & Actions -->
+        <div class="hero-content">
+          <div class="hero-intro-badge">
+            <span class="badge-dot"></span>
+            <span class="intro-greeting">HEY I AM <span class="accent-text">RATAN</span></span>
+          </div>
+
+          <h1 class="hero-main-title">
+            I DESIGN<br>
+            EXPERIENCES<br>
+            THAT <span class="glow-gradient-text">INSPIRE</span>
+          </h1>
+
+          <p class="hero-description">
+            i'm a graphic designer crafting visual identities, digital experiences
+            and creating solutions that make impact.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#works" class="btn-primary-glow">
+              <span>VIEW WORK</span>
+              <span class="btn-pill-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </a>
+
+            <button class="btn-showreel" id="watch-showreel-btn">
+              <span class="play-circle">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </span>
+              <span>WATCH SHOWREEL</span>
+            </button>
+          </div>
+
+          <!-- Live Stats Row -->
+          <div class="hero-stats-row">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff5500" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <div class="stat-details">
+                <h3 class="stat-number"><span class="counter" data-target="150">150</span>+</h3>
+                <p class="stat-label">PROJECT</p>
+              </div>
+            </div>
+
+            <div class="stat-divider"></div>
+
+            <div class="stat-item">
+              <div class="stat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff5500" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <div class="stat-details">
+                <h3 class="stat-number"><span class="counter" data-target="80">80</span>+</h3>
+                <p class="stat-label">CLIENT</p>
+              </div>
+            </div>
+
+            <div class="stat-divider"></div>
+
+            <div class="stat-item">
+              <div class="stat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff5500" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              </div>
+              <div class="stat-details">
+                <h3 class="stat-number"><span class="counter" data-target="5">5</span>+</h3>
+                <p class="stat-label">YEARS EXP</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trusted Brands Logos Row (matching reference) -->
+          <div class="trusted-brands-section">
+            <span class="brands-title">TRUSTED BY BRANDS WORLDWIDE</span>
+            <div class="brands-logo-row">
+              <!-- LinkedIn -->
+              <div class="brand-badge" title="LinkedIn">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.45 1.45 0 0 0 1.46-1.45 1.46 1.46 0 1 0-2.92 0c0 .8.65 1.45 1.46 1.45m1.39 9.74v-8.37H5.07v8.37h2.78z"/>
+                </svg>
+              </div>
+              <!-- Instagram -->
+              <div class="brand-badge" title="Instagram">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </div>
+              <!-- Photoshop -->
+              <div class="brand-badge brand-ps" title="Adobe Photoshop">
+                <span class="tech-icon-text">Ps</span>
+              </div>
+              <!-- Adobe Creative Cloud -->
+              <div class="brand-badge" title="Adobe Suite">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M13.96 3L18.8 15H15.84L14.7 12.08H10.42L12.56 6.84L13.96 3M9.48 3L4.64 15H1.68L6.52 3H9.48M18.8 17.5L22 21H16.48L14.7 16.5H19.2L18.8 17.5M8.44 16.5L6.66 21H1.14L4.34 17.5H8.44Z"/>
+                </svg>
+              </div>
+              <!-- Netflix -->
+              <div class="brand-badge brand-netflix" title="Netflix Design Standards">
+                <span class="tech-icon-text">N</span>
+              </div>
+              <!-- Behance -->
+              <div class="brand-badge" title="Behance Top Creator">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7.5 10.3c.7 0 1.2-.2 1.6-.6.4-.4.6-.9.6-1.5 0-.7-.2-1.2-.7-1.6-.4-.3-1.1-.5-2-.5H2.3v8.5H7c1.1 0 1.9-.3 2.5-.8.5-.6.8-1.3.8-2.2 0-.8-.3-1.4-.8-1.9-.5-.3-1.2-.4-2-.4H4.8V10.3h2.7zm-2.7-2.6h2c.5 0 .9.1 1.2.3.2.2.4.5.4.9 0 .4-.1.7-.4.9-.3.2-.7.3-1.2.3h-2V7.7zm2.4 5.3H4.8v-2.3h2.4c.6 0 1.1.1 1.4.3.3.2.4.6.4 1 0 .5-.2.8-.5 1-.3.2-.8.3-1.5.3zm9.2-3.8c-1.1 0-2 .4-2.7 1.1-.7.7-1 1.7-1 2.9 0 1.2.3 2.2 1 2.9.7.7 1.6 1.1 2.8 1.1 1.8 0 3-1 3.5-2.6h-2.3c-.3.5-.7.8-1.3.8-.5 0-.9-.2-1.2-.5-.3-.4-.4-.9-.4-1.6h5.3c0-.2.1-.4.1-.6 0-1.1-.3-2-1-2.6-.7-.6-1.6-.9-2.9-.9zm-1.2 3.2c0-.5.2-.9.5-1.2.3-.3.8-.5 1.3-.5.5 0 .9.2 1.2.5.3.3.4.7.4 1.2h-3.4zM13.6 5.8h5.3v1.3h-5.3V5.8z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Hero Visual Portrait with Fiery Ring -->
+        <div class="hero-visual-wrapper">
+          <!-- Multi-layer glowing rings for rich interactive dynamic effect -->
+          <div class="fiery-corona-ring" aria-hidden="true"></div>
+          <div class="fiery-outer-pulse" aria-hidden="true"></div>
+
+          <!-- Hero Portrait Image -->
+          <div class="hero-image-frame">
+            <img src="assets/hero.jpg" alt="Muhammad - Creative Visual Designer" class="hero-portrait-img" id="hero-main-image">
+            <div class="hero-image-vignette"></div>
+          </div>
+
+          <!-- Floating Interactive Card 1: Experience & Focus -->
+          <div class="floating-glass-card card-experience">
+            <div class="card-icon-pill">🔥</div>
+            <div class="card-info">
+              <span class="card-label">Specialization</span>
+              <strong class="card-val">Brand Identity & 3D</strong>
+            </div>
+          </div>
+
+          <!-- Floating Interactive Card 2: Satisfaction -->
+          <div class="floating-glass-card card-rating">
+            <div class="rating-stars">★★★★★</div>
+            <span class="card-label">100% Client Satisfaction</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== ABOUT ME SECTION ==================== -->
+    <section class="section-container" id="about">
+      <div class="section-header-tag">
+        <span class="tag-line"></span>
+        <span class="tag-text">MEN HAQIMDA / ABOUT ME</span>
+      </div>
+
+      <div class="about-grid">
+        <!-- Left: Designer Story -->
+        <div class="about-story-card">
+          <h2 class="section-title">
+            Vizual San'at va <span class="glow-gradient-text">Ijodiy Strategiya</span> Uyg'unligi
+          </h2>
+
+          <p class="about-lead">
+            Assalomu alaykum! Men Muhammad (Ratan Design) — 5 yildan ortiq tajribaga ega bo'lgan multidisiplinar grafik dizayner, UI/UX muhandisi va 3D visual artistman.
+          </p>
+
+          <p class="about-body">
+            Mening asosiy maqsadim — shunchaki jozibador rasm chizish emas, balki brendingizni xalqaro maydonda ajralib turadigan, mijozlar qalbini zabt etadigan va haqiqiy biznes natijalarini olib keladigan unutilmas vizual identifikatsiyalarni yaratishdir.
+          </p>
+
+          <!-- Key Highlights -->
+          <div class="about-highlights-list">
+            <div class="highlight-box">
+              <div class="box-icon">🎯</div>
+              <div>
+                <strong>Natijaga yo'naltirilgan dizayn</strong>
+                <p>Har bir loyihada auditoriya psixologiyasi va brend maqsadi tahlil qilinadi.</p>
+              </div>
+            </div>
+            <div class="highlight-box">
+              <div class="box-icon">⚡</div>
+              <div>
+                <strong>Tezkor va aniq ijro</strong>
+                <p>Kelishilgan muddatlarga 100% rioya qilish va bosqichma-bosqich qulay hisobot berish.</p>
+              </div>
+            </div>
+            <div class="highlight-box">
+              <div class="box-icon">🌐</div>
+              <div>
+                <strong>Xalqaro standartlar</strong>
+                <p>Global darajadagi eng so'nggi dizayn trendlari, zamonaviy 3D va tipografiya texnologiyalari.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-actions">
+            <a href="assets/hero.jpg" download="Muhammad_Designer_CV.pdf" class="btn-primary-glow btn-download-cv" id="cv-download-btn">
+              <span>REZYUMENI YUKLAB OLISH (CV)</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </a>
+
+            <button class="btn-secondary-glass" onclick="document.getElementById('qa-section').scrollIntoView({behavior:'smooth'})">
+              <span>SAVOL BERISH</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Skill Matrix -->
+        <div class="about-skills-card">
+          <h3 class="skills-headline">Professional Ko'nikmalar & Dasturlar</h3>
+          <p class="skills-sub">Yuqori darajada o'zlashtirilgan ijodiy vositalar va sohalar:</p>
+
+          <div class="skill-bars-container">
+            <div class="skill-item">
+              <div class="skill-meta">
+                <span class="skill-title">Visual Identity & Branding (Logotiplar, Brendbuk)</span>
+                <span class="skill-pct">98%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill" style="width: 98%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-meta">
+                <span class="skill-title">UI/UX & Product Design (Figma, Veb/Mobil interfeyslar)</span>
+                <span class="skill-pct">94%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill" style="width: 94%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-meta">
+                <span class="skill-title">3D Modeling & Motion Visuals (Blender, Cinema 4D)</span>
+                <span class="skill-pct">89%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill" style="width: 89%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-meta">
+                <span class="skill-title">Art Direction, Tipografiya & Poster Design</span>
+                <span class="skill-pct">95%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill" style="width: 95%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-meta">
+                <span class="skill-title">Photo Manipulation & Retouching (Adobe Photoshop)</span>
+                <span class="skill-pct">96%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill" style="width: 96%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Software Stack Badges -->
+          <div class="tech-tools-cluster">
+            <span class="cluster-heading">FOYDALANILADIGAN DASTURLAR:</span>
+            <div class="tools-grid">
+              <div class="tool-pill"><span>🎨</span> Figma</div>
+              <div class="tool-pill"><span>💠</span> Photoshop</div>
+              <div class="tool-pill"><span>📐</span> Illustrator</div>
+              <div class="tool-pill"><span>🧊</span> Blender 3D</div>
+              <div class="tool-pill"><span>🎬</span> After Effects</div>
+              <div class="tool-pill"><span>⚡</span> Spline 3D</div>
+              <div class="tool-pill"><span>✨</span> Midjourney / AI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== ACHIEVEMENTS SECTION (YUTUQLARIM) ==================== -->
+    <section class="section-container" id="achievements">
+      <div class="section-header-tag">
+        <span class="tag-line"></span>
+        <span class="tag-text">YUTUQLARIM VA SOVRINLAR / ACHIEVEMENTS</span>
+      </div>
+
+      <div class="section-intro-center">
+        <h2 class="section-title">
+          E'tirof Etilgan <span class="glow-gradient-text">Yutuqlar & Marralar</span>
+        </h2>
+        <p class="section-subtitle">
+          Xalqaro tanlovlar, mukofotlar va yillar davomida erishilgan nufuzli ko'rsatkichlar.
+        </p>
+      </div>
+
+      <div class="achievements-cards-grid">
+        <!-- Card 1: Global Award (with featured modal preview) -->
+        <div class="achievement-card glow-card">
+          <div class="card-badge-top">G'OLIBLIK</div>
+          <div class="award-img-preview" onclick="openCertificateModal('Global Innovation Design Award 2024', 'assets/award.jpg', 'Futuristik texnologiyalar va brend vizualizatsiyasi bo\'yicha xalqaro birinchi o\'rin sovrindori.')">
+            <img src="assets/award.jpg" alt="Global Innovation Award 2024">
+            <div class="award-hover-overlay">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <span>Kattalashtirish</span>
+            </div>
+          </div>
+          <div class="achievement-content">
+            <div class="achievement-year">2024 • XALQARO MUKOFOT</div>
+            <h3 class="achievement-title">Global Innovation Design Award</h3>
+            <p class="achievement-desc">
+              Futuristik brending va ilg'or vizual dizayn yo'nalishida 120 dan ortiq xalqaro ishtirokchilar orasida 1-o'rin oltin mukofoti.
+            </p>
+            <button class="btn-cert-view" onclick="openCertificateModal('Global Innovation Design Award 2024', 'assets/award.jpg', 'Futuristik texnologiyalar va brend vizualizatsiyasi bo\'yicha xalqaro birinchi o\'rin sovrindori.')">
+              Sertifikatni Ko'rish →
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 2: Behance & Dribbble Top Creator -->
+        <div class="achievement-card glow-card">
+          <div class="card-badge-top">E'TIROF</div>
+          <div class="award-icon-art">
+            <div class="neon-trophy-circle">
+              🏆
+            </div>
+          </div>
+          <div class="achievement-content">
+            <div class="achievement-year">2023 - 2024 • PLATFORMA</div>
+            <h3 class="achievement-title">Behance & Dribbble Featured</h3>
+            <p class="achievement-desc">
+              Tayyorlangan 12 dan ortiq loyihalar Behance Curation Team tomonidan "Best of Graphic Design" va "Branding" toifalarida rasmiy ko'rgazmaga kiritilgan.
+            </p>
+            <div class="achievement-metrics">
+              <div class="metric-pill">45k+ Tomoshalar</div>
+              <div class="metric-pill">3.8k+ Appreciations</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: 150+ Global Projects Completed -->
+        <div class="achievement-card glow-card">
+          <div class="card-badge-top">MIJOZLAR ISHONCHI</div>
+          <div class="award-icon-art">
+            <div class="neon-trophy-circle">
+              🌍
+            </div>
+          </div>
+          <div class="achievement-content">
+            <div class="achievement-year">5 YILLIK TAJRIBA</div>
+            <h3 class="achievement-title">150+ Muvaffaqiyatli Loyihalar</h3>
+            <p class="achievement-desc">
+              AQSh, BAA, Yevropa va O'zbekistonning yetakchi kompaniyalari, startaplari va brendlari uchun tayyorlangan to'liq muvaffaqiyatli vizual yechimlar.
+            </p>
+            <div class="achievement-metrics">
+              <div class="metric-pill">100% Job Success</div>
+              <div class="metric-pill">80+ Xursand Mijozlar</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Certified Professional -->
+        <div class="achievement-card glow-card">
+          <div class="card-badge-top">SERTIFIKAT</div>
+          <div class="award-icon-art">
+            <div class="neon-trophy-circle">
+              📜
+            </div>
+          </div>
+          <div class="achievement-content">
+            <div class="achievement-year">XALQARO SERTIFIKATSIYA</div>
+            <h3 class="achievement-title">Adobe Certified Expert (ACE)</h3>
+            <p class="achievement-desc">
+              Adobe Visual Design & Digital Media yo'nalishi bo'yicha rasmiy professional darajadagi mutaxassislik sertifikati.
+            </p>
+            <button class="btn-cert-view" onclick="openCertificateModal('Adobe Certified Expert (ACE)', 'assets/award.jpg', 'Adobe Visual Design & Digital Media xalqaro darajadagi mutaxassislik sertifikati.')">
+              Sertifikatni Ko'rish →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== SELECTED WORKS / PORTFOLIO ==================== -->
+    <section class="section-container" id="works">
+      <div class="section-header-tag">
+        <span class="tag-line"></span>
+        <span class="tag-text">LOYIHALAR / SELECTED WORKS</span>
+      </div>
+
+      <div class="section-intro-center">
+        <h2 class="section-title">
+          So'nggi <span class="glow-gradient-text">Ijodiy Ishlarim</span>
+        </h2>
+        <p class="section-subtitle">
+          Brending, UI/UX va 3D visual art bo'yicha e'tiborga molik loyihalar.
+        </p>
+
+        <!-- Work Filter Tabs -->
+        <div class="filter-buttons-bar">
+          <button class="filter-btn active" data-filter="all">Hammasi</button>
+          <button class="filter-btn" data-filter="branding">Branding</button>
+          <button class="filter-btn" data-filter="uiux">UI/UX Dizayn</button>
+          <button class="filter-btn" data-filter="motion">3D & Motion</button>
+        </div>
+      </div>
+
+      <div class="portfolio-grid" id="portfolio-grid">
+        <!-- Project 1: Brand Identity -->
+        <div class="portfolio-card" data-category="branding">
+          <div class="card-media">
+            <img src="assets/project-brand.jpg" alt="Aetherium 3D Brand Identity" loading="lazy">
+            <div class="media-badge">BRANDING</div>
+            <div class="media-overlay">
+              <button class="btn-preview-project" onclick="openProjectModal('Aetherium 3D Brand Identity', 'assets/project-brand.jpg', 'Branding & Visual Architecture', 'Ushbu loyiha kelajak texnologiyalari bilan shug\'ullanuvchi xalqaro fintech kompaniyasi uchun to\'liq vizual identifikatsiya va 3D neon geometrik brend arxitekturasini qamrab oladi.')">
+                Batafsil Ko'rish
+              </button>
+            </div>
+          </div>
+          <div class="card-caption">
+            <div class="card-subcat">VISUAL IDENTITY / LOGO</div>
+            <h3 class="card-title">Aetherium — Ultra Modern 3D Brand</h3>
+            <p class="card-snippet">Geometrik neon va obsidian tosh teksturalari asosidagi premium brending konsepsiyasi.</p>
+          </div>
+        </div>
+
+        <!-- Project 2: UI/UX Mobile App -->
+        <div class="portfolio-card" data-category="uiux">
+          <div class="card-media">
+            <img src="assets/project-ui.jpg" alt="CosmoX Crypto & Fintech Mobile UI" loading="lazy">
+            <div class="media-badge">UI/UX DESIGN</div>
+            <div class="media-overlay">
+              <button class="btn-preview-project" onclick="openProjectModal('CosmoX Crypto & Fintech App', 'assets/project-ui.jpg', 'UI/UX & Mobile Interface', 'CosmoX — yangi avlod kriptovalyuta va investitsiya ilovasi. Dark-mode va neon amber grafikalar bilan ma\'lumotlarni qulay vizualizatsiya qilishga yo\'naltirilgan zamonaviy interfeys.')">
+                Batafsil Ko'rish
+              </button>
+            </div>
+          </div>
+          <div class="card-caption">
+            <div class="card-subcat">MOBILE APP / FINTECH</div>
+            <h3 class="card-title">CosmoX — Next-Gen Crypto & Asset UI</h3>
+            <p class="card-snippet">Figma orqali ishlab chiqilgan interaktiv glassmorphism dizayn tizimi va analitika panellari.</p>
+          </div>
+        </div>
+
+        <!-- Project 3: 3D Motion Art -->
+        <div class="portfolio-card" data-category="motion">
+          <div class="card-media">
+            <img src="assets/project-motion.jpg" alt="Solar Core 3D Motion Sculpture" loading="lazy">
+            <div class="media-badge">3D & MOTION</div>
+            <div class="media-overlay">
+              <button class="btn-preview-project" onclick="openProjectModal('Solar Core Kinetic Sculpture', 'assets/project-motion.jpg', '3D Motion Art & Visuals', 'Suyuq xrom va yonayotgan magma energiyasi asosidagi kinetik 3D abstrakt skulptura. Brend roliklari va audio-vizual namoyishlar uchun maxsus render qilingan.')">
+                Batafsil Ko'rish
+              </button>
+            </div>
+          </div>
+          <div class="card-caption">
+            <div class="card-subcat">3D KINETIC ART / CGI</div>
+            <h3 class="card-title">Solar Core — Abstract Kinetic 3D Art</h3>
+            <p class="card-snippet">Blender va Octane Render yordamida yaratilgan olovli suyuq metall animatsiyasi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== Q&A / ASK ME ANYTHING SECTION ==================== -->
+    <section class="section-container" id="qa-section">
+      <div class="section-header-tag">
+        <span class="tag-line"></span>
+        <span class="tag-text">SAVOL-JAVOB / Q&A SECTION</span>
+      </div>
+
+      <div class="section-intro-center">
+        <h2 class="section-title">
+          Men Haqimda <span class="glow-gradient-text">Savolingiz Bormi?</span>
+        </h2>
+        <p class="section-subtitle">
+          Istalgan savolingizni bevosita yozib qoldiring yoki ko'p beriladigan savollarga javoblar bilan tanishing.
+        </p>
+      </div>
+
+      <div class="qa-layout-grid">
+        <!-- Form: Ask a Question -->
+        <div class="qa-form-card">
+          <div class="form-card-header">
+            <div class="neon-chip">⚡ TEZKOR ALOQA</div>
+            <h3 class="form-title">Savolingizni Yozib Qoldiring</h3>
+            <p class="form-desc">
+              Loyiha buyurtmasi, hamkorlik, dizayn narxlari yoki shaxsiy maslahat bo'yicha savollaringizga mamnuniyat bilan javob beraman.
+            </p>
+          </div>
+
+          <form id="ask-question-form" class="qa-form">
+            <div class="form-group">
+              <label for="user-name">Ismingiz <span class="req">*</span></label>
+              <input type="text" id="user-name" name="name" placeholder="Masalan: Sardor Aliyev" required>
+            </div>
+
+            <div class="form-group">
+              <label for="user-contact">Telegram yoki Email <span class="req">*</span></label>
+              <input type="text" id="user-contact" name="contact" placeholder="@username yoki example@gmail.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="question-category">Savol Mavzusi</label>
+              <select id="question-category" name="category">
+                <option value="Yangi Loyiha / Buyurtma">🚀 Yangi Loyiha / Buyurtma</option>
+                <option value="Dizayn Narxlari & Muddat">💰 Dizayn Narxlari & Muddat</option>
+                <option value="Hamkorlik">🤝 Hamkorlik Taklifi</option>
+                <option value="Shaxsiy Maslahat">💡 Shaxsiy Maslahat / Mentorlik</option>
+                <option value="Boshqa Savol">❓ Boshqa Savol</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="user-question">Savolingiz Matni <span class="req">*</span></label>
+              <textarea id="user-question" name="question" rows="4" placeholder="O'zingizni qiziqtirgan savolni batafsil yozing..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary-glow btn-submit-qa" id="submit-question-btn">
+              <span>SAVOLNI YUBORISH</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </form>
+
+          <!-- Toast feedback element -->
+          <div id="qa-toast" class="qa-toast hidden" role="alert"></div>
+        </div>
+
+        <!-- Right: FAQ Accordion & Community Question Board -->
+        <div class="qa-display-column">
+          <!-- Accordion FAQ -->
+          <div class="faq-accordion-box">
+            <h3 class="column-subtitle">💡 Ko'p Beriladigan Savollar (FAQ)</h3>
+
+            <div class="faq-accordion">
+              <details class="faq-item" open>
+                <summary class="faq-question">
+                  <span>Loyihaning narxi va ishlab chiqish muddati qanday belgilanadi?</span>
+                  <span class="faq-icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                  <p>Loyiha narxi va muddati talab qilinadigan hajmga (masalan, logotip, brendbuk, mobil ilova yoki 3D renderlar) qarab individual hisoblanadi. Odatda brending ishlari 5-10 kun, UI/UX loyihalar 1-3 hafta davom etadi.</p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-question">
+                  <span>Dizayn yakunlangach qanday formatlarda fayllar taqdim etiladi?</span>
+                  <span class="faq-icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                  <p>Barcha original va vektor manba fayllari (Figma, AI, PSD, SVG, PDF, yuqori aniqlikdagi PNG/JPG va 3D obyektlar) to'liq holda foydalanish uchun qulay tartibda taqdim etiladi.</p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-question">
+                  <span>O'zgartirish va tuzatishlar (edits/revisions) kiritish mumkinmi?</span>
+                  <span class="faq-icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                  <p>Albatta! Har bir loyihada kontseptsiya tanlangandan so'ng sizning istaklaringiz bo'yicha 2-3 bosqichli bepul tuzatishlar (revisions) kiritish imkoniyati ta'minlanadi.</p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-question">
+                  <span>O'zbekistondan tashqaridagi xalqaro mijozlar bilan qanday ishlaysiz?</span>
+                  <span class="faq-icon">+</span>
+                </summary>
+                <div class="faq-answer">
+                  <p>Muloqot Telegram, Zoom, Google Meet yoki Email orqali olib boriladi. To'lovlar xalqaro va mahalliy kartalar (Visa, Mastercard, Payme, Click) orqali xavfsiz qabul qilinadi.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <!-- Recently Asked Questions Feed -->
+          <div class="recent-qa-feed">
+            <div class="feed-header">
+              <h4 class="feed-title">💬 Foydalanuvchilar Savollari Doskasi</h4>
+              <span class="feed-badge" id="qa-count-badge">3 ta savol</span>
+            </div>
+            <div class="feed-list" id="community-qa-list">
+              <!-- Dynamically populated & populated with initial seed items -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section class="section-container" id="contact">
+      <div class="contact-banner-card">
+        <div class="contact-banner-glow"></div>
+        <div class="contact-content-center">
+          <span class="neon-chip">🔥 BIRGALIKDA ISHLAYMIZ</span>
+          <h2 class="contact-big-title">
+            Navbatdagi Ajoyib Loyihangizni <br>
+            <span class="glow-gradient-text">Birgalikda Yaratamiz!</span>
+          </h2>
+          <p class="contact-sub">
+            G'oyalaringizni haqiqatga aylantirishga tayyormisiz? Men bilan qulay tarzda bog'laning:
+          </p>
+
+          <div class="contact-methods-grid">
+            <a href="https://t.me/muhammad_design" target="_blank" rel="noopener" class="contact-card-btn">
+              <div class="c-icon">✈️</div>
+              <div class="c-text">
+                <span class="c-label">TELEGRAM</span>
+                <strong class="c-val">@muhammad_design</strong>
+              </div>
+            </a>
+
+            <a href="mailto:hello@muhammad.design" class="contact-card-btn">
+              <div class="c-icon">✉️</div>
+              <div class="c-text">
+                <span class="c-label">EMAIL POCHTA</span>
+                <strong class="c-val">hello@muhammad.design</strong>
+              </div>
+            </a>
+
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="contact-card-btn">
+              <div class="c-icon">📸</div>
+              <div class="c-text">
+                <span class="c-label">INSTAGRAM</span>
+                <strong class="c-val">@ratan_visuals</strong>
+              </div>
+            </a>
+          </div>
+
+          <!-- Direct Fast QR access button inside contact -->
+          <div class="share-site-box">
+            <span>Ushbu portfolio saytni boshqalar bilan ulashmoqchimisiz?</span>
+            <button class="btn-share-trigger" id="contact-qr-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+              <span>QR Kod & Havolani Ochish</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-brand">RATAN DESIGN • MUHAMMAD</span>
+        <p class="footer-copy">© 2026 Barcha huquqlar himoyalangan. Mukammal vizual tajribalar.</p>
+      </div>
+
+      <div class="footer-socials">
+        <a href="#hero" class="footer-social-link">Top</a>
+        <a href="#about" class="footer-social-link">About</a>
+        <a href="#achievements" class="footer-social-link">Yutuqlar</a>
+        <a href="#works" class="footer-social-link">Ishlar</a>
+        <a href="#qa-section" class="footer-social-link">Q&A</a>
+      </div>
+
+      <a href="#hero" class="back-to-top-btn" aria-label="Yuqoriga qaytish">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+
+  <!-- ==================== FLOATING QR BADGE ==================== -->
+  <div class="floating-qr-pill" id="floating-qr-trigger" title="QR-kod orqali saytni telefoningizda oching">
+    <div class="qr-pill-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <rect x="3" y="3" width="7" height="7"></rect>
+        <rect x="14" y="3" width="7" height="7"></rect>
+        <rect x="14" y="14" width="7" height="7"></rect>
+        <rect x="3" y="14" width="7" height="7"></rect>
+      </svg>
+    </div>
+    <span class="qr-pill-label">QR-Kod & Havola</span>
+  </div>
+
+
+  <!-- ==================== MODAL: QR CODE & SHARE ==================== -->
+  <div class="modal-overlay" id="qr-modal" aria-hidden="true">
+    <div class="modal-card qr-modal-card">
+      <button class="modal-close-btn" id="close-qr-modal" aria-label="Yopish">✕</button>
+
+      <div class="qr-modal-header">
+        <div class="qr-badge-icon">📲</div>
+        <div class="live-status-pill"><span class="pulse-dot-green"></span> 24/7 JONLI EFIRDA</div>
+        <h3 class="modal-title">QR-Kod Orqali Saytga Kirish</h3>
+        <p class="modal-sub">Telefon kamerangizni QR-kodga qarating yoki havolani oching</p>
+      </div>
+
+      <!-- QR Code Canvas Display Frame -->
+      <div class="qr-canvas-frame">
+        <canvas id="qr-code-canvas" width="220" height="220"></canvas>
+        <div class="qr-scan-line"></div>
+      </div>
+
+      <!-- URL link box with 1-click copy -->
+      <div class="qr-url-box">
+        <a href="https://ratan-design.surge.sh" target="_blank" rel="noopener" class="qr-url-text" id="share-url-text">https://ratan-design.surge.sh</a>
+        <button class="btn-copy-url" id="copy-url-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span id="copy-btn-label">Nusxalash</span>
+        </button>
+      </div>
+
+      <!-- Download QR Action -->
+      <div class="qr-actions-row">
+        <button class="btn-secondary-glass" id="download-qr-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>QR-Kodni Saqlab Olish (HD PNG)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==================== MODAL: PROJECT LIGHTBOX ==================== -->
+  <div class="modal-overlay" id="project-modal" aria-hidden="true">
+    <div class="modal-card project-modal-card">
+      <button class="modal-close-btn" id="close-project-modal" aria-label="Yopish">✕</button>
+      <div class="project-modal-image-wrapper">
+        <img src="" alt="" id="modal-project-img">
+      </div>
+      <div class="project-modal-details">
+        <span class="modal-category" id="modal-project-cat">Branding</span>
+        <h3 class="modal-title" id="modal-project-title">Project Title</h3>
+        <p class="modal-desc" id="modal-project-desc">Description</p>
+        <div class="modal-action-row">
+          <a href="#contact" class="btn-primary-glow" onclick="closeAllModals()">
+            <span>Shunday Loyiha Buyurtma Qilish</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==================== MODAL: CERTIFICATE VIEWER ==================== -->
+  <div class="modal-overlay" id="cert-modal" aria-hidden="true">
+    <div class="modal-card cert-modal-card">
+      <button class="modal-close-btn" id="close-cert-modal" aria-label="Yopish">✕</button>
+      <div class="cert-modal-body">
+        <img src="assets/award.jpg" alt="Sertifikat" id="modal-cert-img">
+        <div class="cert-info-box">
+          <h3 class="modal-title" id="modal-cert-title">Sertifikat Nomi</h3>
+          <p class="modal-desc" id="modal-cert-desc">Tavsif</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==================== MODAL: SHOWREEL VIEWER ==================== -->
+  <div class="modal-overlay" id="showreel-modal" aria-hidden="true">
+    <div class="modal-card showreel-modal-card">
+      <button class="modal-close-btn" id="close-showreel-modal" aria-label="Yopish">✕</button>
+      <div class="showreel-video-container">
+        <!-- Interactive animated showreel canvas / preview -->
+        <div class="showreel-placeholder">
+          <img src="assets/project-motion.jpg" alt="Showreel Preview" class="showreel-bg-img">
+          <div class="showreel-overlay">
+            <div class="big-pulsing-play">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="#ffffff">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+            <h4>RATAN DESIGN SHOWREEL 2026</h4>
+            <p>Visual Identities, 3D Cinematics & Brand Stories</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QR Code Standard Library for 100% Camera Scannability -->
+  <script src="qrcode.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
