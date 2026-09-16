@@ -235,33 +235,33 @@ function initQASystem() {
   const defaultQuestions = [
     {
       id: 1,
-      name: 'Sherzodbek Qodirov',
-      category: '🚀 Yangi Loyiha / Buyurtma',
-      question: 'Assalomu alaykum! Yangi fintech startapimiz uchun to\'liq brending va mobil ilova dizayni kerak edi. Ish boshlash uchun qanday ma\'lumotlar talab qilinadi?',
-      answer: 'Assalomu alaykum! Loyihaning maqsadli auditoriyasi, raqobatchilari va asosiy funksiyalari ko\'rsatilgan qisqacha brif (texnik topshiriq) kifoya. Telegram orqali bog\'lansangiz, tayyor brif shaklini yuboraman.',
-      time: 'Kecha, 16:40'
+      name: 'Jasurbek Oripov',
+      category: '🤖 AI & Bot Proyektlar',
+      question: 'Assalomu alaykum! Do\'konimiz uchun Telegramda sun\'iy intellekt orqali mijozlarga avtomatik mahsulot tavsiya qiluvchi aqlli bot qilib bera olasizmi?',
+      answer: 'Assalomu alaykum! Albatta, do\'koningiz mahsulotlar bazasini AI modeli bilan integratsiya qilib, xaridor savollariga insondek aniq javob beruvchi va buyurtma oluvchi Telegram bot tizimini ishlab chiqaman.',
+      time: 'Kecha, 18:20'
     },
     {
       id: 2,
-      name: 'Malika Karimova',
-      category: '💰 Dizayn Narxlari & Muddat',
-      question: 'Logotip va firma stili (brandbook) tayyorlash o\'rtacha qancha vaqt oladi?',
-      answer: 'Logotip va brendbuk to\'plami barcha vektor fayllar va qo\'llash qoidalari bilan birga odatda 7-10 ish kunida tayyorlanadi.',
-      time: '3 kun oldin'
+      name: 'Otabek N.',
+      category: '💼 Telegram E-Commerce & Savdo',
+      question: '2 yildan beri Telegram orqali savdo qilar ekansiz. Yangi boshlovchilar uchun doimiy mijozlar bazasini shakllantirish bo\'yicha qanday maslahat berasiz?',
+      answer: 'Eng muhimi — ishonch, mahsulot sifati va mijozlarga tezkor javob berish. Telegramda kontent va sotuv voronkasini to\'g\'ri yo\'lga qo\'ysangiz, mijozlar o\'zlari sizni boshqalarga tavsiya qilishadi.',
+      time: '2 kun oldin'
     },
     {
       id: 3,
-      name: 'Azizbek R.',
-      category: '💡 Shaxsiy Maslahat / Mentorlik',
-      question: 'Blender 3D va kinetik harakatli grafikalarni o\'rganish bo\'yicha portfolioingizdagi kabi loyihalarni qanday texnologiyalarda chiqargansiz?',
-      answer: 'Asosan Blender 3D, Cycles/Octane render dvigatellari hamda post-processing uchun After Effects dasturidan foydalanaman.',
-      time: '1 hafta oldin'
+      name: 'Madina Rahimova',
+      category: '🇺🇸 Harvard & AQSh O\'qish (BBA)',
+      question: 'Qorako\'l maktabida o\'qib, 16 yoshda biznes, sport va AI bilan shug\'ullanish bilan birga Harvard BBA ga tayyorgarlikni qanday ulguryapsiz?',
+      answer: 'Hammasi qat\'iy vaqt taqsimoti va Taekwondodan o\'rgangan temir intizomim orqali. Maktabdagi darslarim, til o\'rganish, sport va amaliy loyihalarim uchun aniq reja asosida ishlayman.',
+      time: '5 kun oldin'
     }
   ];
 
   let storedQuestions = [];
   try {
-    const local = localStorage.getItem('ratan_portfolio_qa');
+    const local = localStorage.getItem('muhammadrizo_portfolio_qa_v2');
     storedQuestions = local ? JSON.parse(local) : defaultQuestions;
   } catch (e) {
     storedQuestions = defaultQuestions;
@@ -331,7 +331,7 @@ function initQASystem() {
 
       storedQuestions.unshift(newQ);
       try {
-        localStorage.setItem('ratan_portfolio_qa', JSON.stringify(storedQuestions));
+        localStorage.setItem('muhammadrizo_portfolio_qa_v2', JSON.stringify(storedQuestions));
       } catch (err) {
         console.error(err);
       }
