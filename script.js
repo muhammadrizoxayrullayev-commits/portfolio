@@ -362,7 +362,7 @@ function escapeHTML(str) {
 /* ==========================================================================
    6. 100% SCANNABLE QR CODE GENERATOR & 24/7 SHARING SYSTEM
    ========================================================================== */
-const LIVE_24_7_URL = 'https://muhammadrizo.surge.sh';
+const LIVE_24_7_URL = 'https://muhammadrizoxayrullayev-commits.github.io/portfolio/';
 
 function initQRCodeFeature() {
   const canvas = document.getElementById('qr-code-canvas');
