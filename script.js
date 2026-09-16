@@ -283,7 +283,7 @@ function initQASystem() {
         ${
           q.answer
             ? `<div class="feed-answer-box">
-                <strong class="feed-answer-author">RATAN (MUHAMMAD) JAVOBI:</strong>
+                <strong class="feed-answer-author">MUHAMMADRIZO XAYRULLAYEV JAVOBI:</strong>
                 <p class="feed-answer-text">${escapeHTML(q.answer)}</p>
               </div>`
             : `<div class="feed-answer-box" style="border-left-color: #ffaa00; background: rgba(255, 170, 0, 0.08);">
@@ -425,7 +425,7 @@ function initQRCodeFeature() {
       drawStandardQRCode(hdCanvas, currentUrl, true);
 
       const link = document.createElement('a');
-      link.download = 'Ratan_Design_24_7_Portfolio_QRCode.png';
+      link.download = 'Muhammadrizo_Xayrullayev_Portfolio_QRCode.png';
       link.href = hdCanvas.toDataURL('image/png');
       link.click();
     });
