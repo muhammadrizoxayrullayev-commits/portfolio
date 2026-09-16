@@ -371,12 +371,8 @@ function initQRCodeFeature() {
   const copyLabel = document.getElementById('copy-btn-label');
   const downloadBtn = document.getElementById('download-qr-btn');
 
-  // If page is hosted on live public domain, use it; otherwise use the permanent 24/7 URL
-  const isLocal = window.location.hostname === 'localhost' || 
-                  window.location.hostname === '127.0.0.1' || 
-                  window.location.protocol === 'file:';
-
-  const currentUrl = isLocal ? LIVE_24_7_URL : window.location.href;
+  // Always encode the official 24/7 public URL so any camera can scan and open it
+  const currentUrl = LIVE_24_7_URL;
 
   if (urlDisplay) {
     urlDisplay.textContent = currentUrl;
@@ -389,6 +385,18 @@ function initQRCodeFeature() {
   if (canvas) {
     drawStandardQRCode(canvas, currentUrl);
   }
+
+  // Also redraw whenever QR modal opens to guarantee sharp rendering
+  const openQrBtn = document.getElementById('open-qr-btn');
+  const floatingQrBtn = document.getElementById('floating-qr-trigger');
+  const contactQrBtn = document.getElementById('contact-qr-btn');
+  [openQrBtn, floatingQrBtn, contactQrBtn].forEach(btn => {
+    if (btn) {
+      btn.addEventListener('click', () => {
+        if (canvas) drawStandardQRCode(canvas, currentUrl);
+      });
+    }
+  });
 
   // 1-Click Copy link
   if (copyBtn) {
@@ -420,8 +428,6 @@ function initQRCodeFeature() {
   if (downloadBtn) {
     downloadBtn.addEventListener('click', () => {
       const hdCanvas = document.createElement('canvas');
-      hdCanvas.width = 1200;
-      hdCanvas.height = 1200;
       drawStandardQRCode(hdCanvas, currentUrl, true);
 
       const link = document.createElement('a');
@@ -434,12 +440,12 @@ function initQRCodeFeature() {
 
 /**
  * Generates an authentic, 100% camera-scannable ISO/IEC 18004 QR Code
- * Compatible with iPhone (iOS Camera), Android (Google Lens, Samsung), & all scanners
+ * Zero distortion, exact integer pixel modules, 4-cell white quiet zone.
+ * Instantly scannable by iPhone Camera, Android Google Lens, & all scanners.
  */
 function drawStandardQRCode(canvas, text, isHD = false) {
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  const size = canvas.width;
 
   let qr;
   try {
@@ -458,64 +464,32 @@ function drawStandardQRCode(canvas, text, isHD = false) {
   }
 
   const moduleCount = qr.getModuleCount();
-  const margin = 4; // Standard quiet zone
+  const margin = 4; // Standard 4-cell quiet zone required for camera edge detection
   const totalCells = moduleCount + margin * 2;
-  const cellSize = size / totalCells;
+  const cellSize = isHD ? 24 : 10;
+  const fullSize = totalCells * cellSize;
 
-  // Pure white background for maximum contrast & instant camera recognition
+  canvas.width = fullSize;
+  canvas.height = fullSize;
+
+  // 1. Pure solid white background & quiet zone (Maximum contrast ratio)
   ctx.fillStyle = '#ffffff';
-  ctx.fillRect(0, 0, size, size);
+  ctx.fillRect(0, 0, fullSize, fullSize);
 
-  // Deep obsidian black modules for sharp clarity
-  ctx.fillStyle = '#060608';
+  // 2. Pure solid black modules (Exact integer pixel geometry without subpixel blur)
+  ctx.fillStyle = '#000000';
   for (let r = 0; r < moduleCount; r++) {
     for (let c = 0; c < moduleCount; c++) {
       if (qr.isDark(r, c)) {
         ctx.fillRect(
-          Math.floor((c + margin) * cellSize),
-          Math.floor((r + margin) * cellSize),
-          Math.ceil(cellSize),
-          Math.ceil(cellSize)
+          (c + margin) * cellSize,
+          (r + margin) * cellSize,
+          cellSize,
+          cellSize
         );
       }
     }
   }
-
-  // Draw stylish fiery outer boundary accents (placed in outer margin safe zone)
-  const accentWidth = isHD ? 12 : 3;
-  const cornerLength = isHD ? 80 : 20;
-  const inset = isHD ? 16 : 4;
-
-  ctx.strokeStyle = '#ff5500';
-  ctx.lineWidth = accentWidth;
-
-  // Top-Left
-  ctx.beginPath();
-  ctx.moveTo(inset, inset + cornerLength);
-  ctx.lineTo(inset, inset);
-  ctx.lineTo(inset + cornerLength, inset);
-  ctx.stroke();
-
-  // Top-Right
-  ctx.beginPath();
-  ctx.moveTo(size - inset - cornerLength, inset);
-  ctx.lineTo(size - inset, inset);
-  ctx.lineTo(size - inset, inset + cornerLength);
-  ctx.stroke();
-
-  // Bottom-Left
-  ctx.beginPath();
-  ctx.moveTo(inset, size - inset - cornerLength);
-  ctx.lineTo(inset, size - inset);
-  ctx.lineTo(inset + cornerLength, size - inset);
-  ctx.stroke();
-
-  // Bottom-Right
-  ctx.beginPath();
-  ctx.moveTo(size - inset - cornerLength, size - inset);
-  ctx.lineTo(size - inset, size - inset);
-  ctx.lineTo(size - inset, size - inset - cornerLength);
-  ctx.stroke();
 }
 
 /* ==========================================================================

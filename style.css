@@ -2023,22 +2023,14 @@ main {
 #qr-code-canvas {
   width: 100%;
   height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }
 
 .qr-scan-line {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, #ff4800, #ffaa00, transparent);
-  box-shadow: 0 0 10px #ff5500;
-  animation: scanLine 2.5s ease-in-out infinite alternate;
-}
-
-@keyframes scanLine {
-  0% { top: 5%; }
-  100% { top: 95%; }
+  display: none;
 }
 
 .qr-url-box {
