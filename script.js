@@ -12,8 +12,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   initEmbersCanvas();
   initNavbarScroll();
+  initCyberAudio();
   initStatsCounter();
   initPortfolioFilter();
+  initAITerminal();
+  initPitchDeckSystem();
   initQASystem();
   initModals();
   initQRCodeFeature();
@@ -199,6 +202,7 @@ function initPortfolioFilter() {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      playCyberSound('click');
 
       const filter = btn.getAttribute('data-filter');
 
@@ -579,7 +583,10 @@ window.openProjectModal = function(title, imgSrc, category, description) {
   if (titleEl) titleEl.textContent = title;
   if (descEl) descEl.textContent = description;
 
-  if (modal) modal.classList.add('active');
+  if (modal) {
+    modal.classList.add('active');
+    playCyberSound('click');
+  }
 };
 
 window.openCertificateModal = function(title, imgSrc, description) {
@@ -592,7 +599,360 @@ window.openCertificateModal = function(title, imgSrc, description) {
   if (titleEl) titleEl.textContent = title;
   if (descEl) descEl.textContent = description;
 
-  if (modal) modal.classList.add('active');
+  if (modal) {
+    modal.classList.add('active');
+    playCyberSound('beep');
+  }
 };
 
 window.closeAllModals = closeAllModals;
+
+/* ==========================================================================
+   8. CYBER AUDIO FX SYSTEM (HTML5 WEB AUDIO API SYNTHESIZER)
+   ========================================================================== */
+let audioCtx = null;
+let soundEnabled = true;
+
+function initCyberAudio() {
+  const savedSound = localStorage.getItem('muhammadrizo_sound_enabled');
+  soundEnabled = savedSound !== null ? savedSound === 'true' : true;
+
+  const toggleBtn = document.getElementById('sound-toggle-btn');
+  const icon = document.getElementById('sound-icon');
+
+  const updateUI = () => {
+    if (icon) icon.textContent = soundEnabled ? '🔊' : '🔇';
+    if (toggleBtn) {
+      if (soundEnabled) {
+        toggleBtn.classList.remove('muted');
+        toggleBtn.title = "Ovoz effektlari yoqilgan (O'chirish uchun bosing)";
+      } else {
+        toggleBtn.classList.add('muted');
+        toggleBtn.title = "Ovoz effektlari o'chirilgan (Yoqish uchun bosing)";
+      }
+    }
+  };
+
+  updateUI();
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      localStorage.setItem('muhammadrizo_sound_enabled', soundEnabled);
+      updateUI();
+      if (soundEnabled) playCyberSound('beep');
+    });
+  }
+}
+
+function playCyberSound(type = 'click') {
+  if (!soundEnabled) return;
+  try {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+
+    const now = audioCtx.currentTime;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    if (type === 'click') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(800, now);
+      osc.frequency.exponentialRampToValueAtTime(300, now + 0.05);
+      gain.gain.setValueAtTime(0.12, now);
+      gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+      osc.start(now);
+      osc.stop(now + 0.05);
+    } else if (type === 'beep') {
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(587.33, now);
+      osc.frequency.setValueAtTime(880, now + 0.06);
+      gain.gain.setValueAtTime(0.1, now);
+      gain.gain.exponentialRampToValueAtTime(0.01, now + 0.14);
+      osc.start(now);
+      osc.stop(now + 0.14);
+    } else if (type === 'whoosh') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(250, now);
+      osc.frequency.exponentialRampToValueAtTime(950, now + 0.12);
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.exponentialRampToValueAtTime(0.005, now + 0.12);
+      osc.start(now);
+      osc.stop(now + 0.12);
+    } else if (type === 'success') {
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(523.25, now);
+      osc.frequency.setValueAtTime(659.25, now + 0.08);
+      osc.frequency.setValueAtTime(783.99, now + 0.16);
+      gain.gain.setValueAtTime(0.12, now);
+      gain.gain.exponentialRampToValueAtTime(0.01, now + 0.28);
+      osc.start(now);
+      osc.stop(now + 0.28);
+    }
+  } catch (e) {
+    // Audio context not allowed or failed
+  }
+}
+
+/* ==========================================================================
+   9. INTERACTIVE AI TERMINAL & PLAYGROUND SYSTEM
+   ========================================================================== */
+function initAITerminal() {
+  const screen = document.getElementById('terminal-screen-output');
+  const chips = document.querySelectorAll('.cmd-chip');
+  const form = document.getElementById('terminal-custom-form');
+  const input = document.getElementById('terminal-user-input');
+
+  if (!screen) return;
+
+  const responses = {
+    profile: `[SYS_AUTH: VERIFIED] Loading profile: Muhammadrizo Xayrullayev...
+--------------------------------------------------
+✦ YOSH & MAKTAB : 16 yosh | Qorako'l maktabi (10-sinf)
+✦ ASOSIY FOKUS  : Sun'iy Intellekt, LLM va Avtonom Agentlar
+✦ BIZNES TAJRIBA: 2 yillik Telegram E-Commerce (2024 - 2026)
+✦ SPORT YUTUG'I : Taekwondo sovrindori (Bir nechta medallar)
+✦ SOVRIN        : Robototexnika tanlovida 2 000 000 so'm yutug'i
+✦ TIL BILISHI   : Fluent English (Erkin so'zlashuv)
+✦ MAQSAD        : Garvard (Harvard University) BBA darajasi
+--------------------------------------------------
+> STATUS: Kelajak sari 100% fokus va qat'iy intizomda.`,
+
+    agents: `[RUNNING: ./ai-agents.sh] Nexus Multi-Agent Architecture
+--------------------------------------------------
+[✓] Core Engine   : LangChain & LLM Chaining
+[✓] Agent 01      : Bozor tahlili va ma'lumotlar tahlili
+[✓] Agent 02      : Telegram API integratsiyasi va xaridor muloqoti
+[✓] Agent 03      : Avtonom vazifalar boshqaruvi va hisobotlar
+[✓] Vision Modul  : YOLOv8 real-time obyekt deteksiyasi
+[✓] Voice Modul   : Whisper asosidagi o'zbek tili STT & TTS
+--------------------------------------------------
+> XULOSA: Tizim to'liq avtonom ishlaydi va biznes jarayonlarini 10x tezlashtiradi.`,
+
+    business: `[RUNNING: ./ecommerce-stats.sh] 2 Yillik Savdo Metriklari
+--------------------------------------------------
+[✓] Davomiylik    : 2024-yildan buyon uzluksiz (2 yil)
+[✓] Platforma     : Telegram tarmog'i va bot ekotizimi
+[✓] Konversiya    : Yuqori mijozlar sadoqati va qayta xaridlar
+[✓] Ko'nikmalar   : Mahsulot tanlash, marketing, mijozlar psixologiyasi,
+                    yetkazib berish logistikasi va to'lov nazorati.
+--------------------------------------------------
+> NATIJA: Mustaqil moliyaviy boshqaruv va amaliy tadbirkorlik tajribasi.`,
+
+    harvard: `[RUNNING: ./harvard-bba.sh] Strategic Roadmap (2026-2030)
+--------------------------------------------------
+[✓] Maqsad Oliygoh: Harvard Business School (BBA / Management)
+[✓] Asosiy Poydevor: Qorako'l maktabi aniq fanlar va liderlik
+[✓] Til darajasi   : Fluent English (Xalqaro imtihonlar tayyorgarligi)
+[✓] Strategik Reja :
+    1. AI loyihalar va biznes natijalarini xalqaro miqyosga olib chiqish
+    2. Garvard va AQSh TOP universitetlariga hujjat topshirish
+    3. Global Sun'iy Intellekt venchur startap fondiga asos solish
+--------------------------------------------------
+> SHIOR: "Bilim + Amaliyot + Intizom = Cheksiz Imkoniyatlar!"`,
+
+    discipline: `[RUNNING: ./discipline.sh] Temir Intizom & Muhandislik
+--------------------------------------------------
+[✓] Taekwondo     : Bir nechta chempionat medallari sohibi.
+                    Sport intizomi menga jismoniy kuch, stressga
+                    bardoshlilik va g'alabaga intilishni o'rgatdi.
+[✓] Robototexnika : Tanlovda 2 000 000 so'mlik bosh mukofot va sertifikatlar.
+                    Aqlli datchiklar, avtomatika va amaliy muhandislik.
+--------------------------------------------------
+> XULOSA: Kundalik qat'iy reja va iroda — har qanday yutuqning garovidir.`
+  };
+
+  let typewriterTimer = null;
+
+  function typeOutput(text) {
+    if (typewriterTimer) clearInterval(typewriterTimer);
+    screen.innerHTML = '';
+    const pre = document.createElement('pre');
+    pre.style.whiteSpace = 'pre-wrap';
+    pre.style.fontFamily = 'inherit';
+    pre.style.margin = '0';
+    screen.appendChild(pre);
+
+    let i = 0;
+    const speed = 10;
+    typewriterTimer = setInterval(() => {
+      if (i < text.length) {
+        pre.textContent += text.charAt(i);
+        i++;
+        screen.scrollTop = screen.scrollHeight;
+      } else {
+        clearInterval(typewriterTimer);
+        const cursor = document.createElement('span');
+        cursor.className = 'terminal-cursor';
+        pre.appendChild(cursor);
+      }
+    }, speed);
+  }
+
+  // Initial execution
+  typeOutput(responses.profile);
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      playCyberSound('click');
+
+      const cmd = chip.getAttribute('data-cmd');
+      if (cmd === 'clear') {
+        if (typewriterTimer) clearInterval(typewriterTimer);
+        screen.innerHTML = '<span class="terminal-cursor"></span>';
+      } else if (responses[cmd]) {
+        typeOutput(responses[cmd]);
+      }
+    });
+  });
+
+  if (form && input) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const val = input.value.trim();
+      if (!val) return;
+      playCyberSound('beep');
+
+      const lower = val.toLowerCase();
+      let reply = '';
+
+      if (lower.includes('ai') || lower.includes('sun\'iy') || lower.includes('bot') || lower.includes('proyekt')) {
+        reply = responses.agents;
+      } else if (lower.includes('biznes') || lower.includes('savdo') || lower.includes('pul') || lower.includes('telegram')) {
+        reply = responses.business;
+      } else if (lower.includes('harvard') || lower.includes('garvard') || lower.includes('universitet') || lower.includes('oqish')) {
+        reply = responses.harvard;
+      } else if (lower.includes('sport') || lower.includes('taekwondo') || lower.includes('robot')) {
+        reply = responses.discipline;
+      } else if (lower.includes('kim') || lower.includes('haqida') || lower.includes('salom')) {
+        reply = responses.profile;
+      } else {
+        reply = `[SO'ROV QABUL QILINDI: "${escapeHTML(val)}"]
+--------------------------------------------------
+Assalomu alaykum! Muhammadrizo Xayrullayev bilan bog'liq har qanday savolingiz bo'yicha:
+- Yuqoridagi tezkor buyruqlarni bosishingiz mumkin.
+- Saytdagi Q&A bo'limida savol yozib qoldirishingiz mumkin.
+- Shuningdek, Telegram orqali (@suxbz) bevosita bog'lanishingiz mumkin!
+--------------------------------------------------
+> Muhammadrizo AI tizimi har doim xizmatingizda!`;
+      }
+
+      typeOutput(reply);
+      input.value = '';
+    });
+  }
+}
+
+/* ==========================================================================
+   10. INTERACTIVE MULTI-SLIDE PRESENTATION DECK SYSTEM
+   ========================================================================== */
+let currentDeckSlide = 0;
+const totalDeckSlides = 5;
+
+function updateDeckSlideUI() {
+  const slides = document.querySelectorAll('.deck-slide');
+  const bullets = document.querySelectorAll('.deck-bullet');
+  const indicator = document.getElementById('deck-slide-indicator');
+  const progressFill = document.getElementById('deck-progress-fill');
+  const prevBtn = document.getElementById('deck-prev-btn');
+  const nextBtn = document.getElementById('deck-next-btn');
+
+  slides.forEach((s, idx) => {
+    if (idx === currentDeckSlide) {
+      s.classList.add('active');
+    } else {
+      s.classList.remove('active');
+    }
+  });
+
+  bullets.forEach((b, idx) => {
+    if (idx === currentDeckSlide) {
+      b.classList.add('active');
+    } else {
+      b.classList.remove('active');
+    }
+  });
+
+  if (indicator) {
+    indicator.textContent = `Slayd ${currentDeckSlide + 1} / ${totalDeckSlides}`;
+  }
+
+  if (progressFill) {
+    progressFill.style.width = `${((currentDeckSlide + 1) / totalDeckSlides) * 100}%`;
+  }
+
+  if (prevBtn) prevBtn.disabled = currentDeckSlide === 0;
+  if (nextBtn) nextBtn.disabled = currentDeckSlide === totalDeckSlides - 1;
+}
+
+window.jumpToDeckSlide = function(idx) {
+  if (idx >= 0 && idx < totalDeckSlides) {
+    currentDeckSlide = idx;
+    updateDeckSlideUI();
+    playCyberSound('whoosh');
+  }
+};
+
+window.nextDeckSlide = function() {
+  if (currentDeckSlide < totalDeckSlides - 1) {
+    currentDeckSlide++;
+    updateDeckSlideUI();
+    playCyberSound('whoosh');
+  }
+};
+
+window.prevDeckSlide = function() {
+  if (currentDeckSlide > 0) {
+    currentDeckSlide--;
+    updateDeckSlideUI();
+    playCyberSound('whoosh');
+  }
+};
+
+window.openPitchDeckModal = function(initialIndex = 0) {
+  const modal = document.getElementById('pitchdeck-modal');
+  if (!modal) return;
+  currentDeckSlide = initialIndex || 0;
+  updateDeckSlideUI();
+  modal.classList.add('active');
+  playCyberSound('success');
+};
+
+function initPitchDeckSystem() {
+  const modal = document.getElementById('pitchdeck-modal');
+  const closeBtn = document.getElementById('close-pitchdeck-modal');
+
+  if (closeBtn && modal) {
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+      playCyberSound('click');
+    });
+  }
+
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (modal && modal.classList.contains('active')) {
+      if (e.key === 'ArrowRight') {
+        window.nextDeckSlide();
+      } else if (e.key === 'ArrowLeft') {
+        window.prevDeckSlide();
+      }
+    }
+  });
+}
+
