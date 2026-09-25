@@ -460,45 +460,123 @@
           <div class="deck-banner-content">
             <div class="deck-tag-pill">
               <span>🎬</span>
-              <span>MULTIMEDIA PITCH DECK • VIDEO REJIM</span>
+              <span>JONLI MULTIMEDIA PREZENTATSIYA • VIDEO REJIM</span>
             </div>
             <h3 class="deck-banner-title">
               Sun'iy Intellekt & Global Biznes: <br>
-              <span class="glow-gradient-text">Jonli Rasmli & Video Taqdimot</span>
+              <span class="glow-gradient-text">Jonli Rasmli Taqdimot</span>
             </h3>
             <p class="deck-banner-desc">
-              Har bir slayd uchun maxsus HD tasvirlar, Taekwondo va robototexnika sertifikati, ko'p agentli AI arxitekturasi hamda avtomatik video taqdimot rejimi jamlangan interaktiv multimedia taqdimoti.
+              Quyidagi 5 ta slaydni bosing yoki <strong>Video Rejimni</strong> yoqing — har bir slayd haqiqiy rasmlar, sertifikatlar va natijalar bilan jonlanadi:
             </p>
 
-            <div class="deck-highlights-row">
-              <div class="deck-mini-feat">
-                <span>📸</span> Har Bir Slaydda HD Tasvirlar
+            <!-- 5 Interactive Slide Cards with Real Pictures -->
+            <div class="inline-deck-list" id="inline-deck-cards-list">
+              <!-- Card 0 -->
+              <div class="inline-deck-card active" onclick="setInlineDeckSlide(0)" data-inline-slide="0">
+                <div class="inline-deck-thumb">
+                  <img src="assets/hero.jpg" alt="Muhammadrizo Portreti">
+                </div>
+                <div class="inline-deck-info">
+                  <strong class="inline-deck-title">1-Slayd: 16 Yoshli Innovator Missiyasi</strong>
+                  <span class="inline-deck-sub">Qorako'l maktabi (10-sinf) • AI Dasturchi</span>
+                </div>
+                <span class="inline-deck-badge">01</span>
               </div>
-              <div class="deck-mini-feat">
-                <span>▶</span> Avtomatik Video / Slayd-Show
+
+              <!-- Card 1 -->
+              <div class="inline-deck-card" onclick="setInlineDeckSlide(1)" data-inline-slide="1">
+                <div class="inline-deck-thumb">
+                  <img src="assets/project-agent.jpg" alt="Ko'p Agentli AI Tizimi">
+                </div>
+                <div class="inline-deck-info">
+                  <strong class="inline-deck-title">2-Slayd: Ko'p Agentli AI & Neyrotarmoqlar</strong>
+                  <span class="inline-deck-sub">LangChain & LLM Chaining • 24/7 Avtomatika</span>
+                </div>
+                <span class="inline-deck-badge">02</span>
               </div>
-              <div class="deck-mini-feat">
-                <span>🥋</span> Taekwondo & 2 Mln Sovrin Rasmlari
+
+              <!-- Card 2 -->
+              <div class="inline-deck-card" onclick="setInlineDeckSlide(2)" data-inline-slide="2">
+                <div class="inline-deck-thumb">
+                  <img src="assets/project-brand.jpg" alt="Telegram E-Commerce 2 Yillik Savdo">
+                </div>
+                <div class="inline-deck-info">
+                  <strong class="inline-deck-title">3-Slayd: 2 Yillik Telegram E-Commerce</strong>
+                  <span class="inline-deck-sub">Real savdo oqimi, mijozlar bazasi va daromad</span>
+                </div>
+                <span class="inline-deck-badge">03</span>
               </div>
-              <div class="deck-mini-feat">
-                <span>🇺🇸</span> Harvard BBA & Global Reja
+
+              <!-- Card 3 -->
+              <div class="inline-deck-card" onclick="setInlineDeckSlide(3)" data-inline-slide="3">
+                <div class="inline-deck-thumb">
+                  <img src="assets/taekwondo-medals.jpg" alt="Taekwondo Medallari & Robototexnika">
+                </div>
+                <div class="inline-deck-info">
+                  <strong class="inline-deck-title">4-Slayd: Taekwondo & 2 Mln Robototexnika</strong>
+                  <span class="inline-deck-sub">Sport chempioni medallari va 2 mln yutuq</span>
+                </div>
+                <span class="inline-deck-badge">04</span>
+              </div>
+
+              <!-- Card 4 -->
+              <div class="inline-deck-card" onclick="setInlineDeckSlide(4)" data-inline-slide="4">
+                <div class="inline-deck-thumb">
+                  <img src="assets/project-pitchdeck.jpg" alt="Harvard BBA Global Venture">
+                </div>
+                <div class="inline-deck-info">
+                  <strong class="inline-deck-title">5-Slayd: Harvard BBA & Global Reja (2026-2030)</strong>
+                  <span class="inline-deck-sub">AQSh TOP universitetlari va AI startap fondi</span>
+                </div>
+                <span class="inline-deck-badge">05</span>
               </div>
             </div>
 
             <div class="deck-banner-actions">
-              <button class="btn-deck-launch" onclick="openPitchDeckModal(0)">
+              <button class="btn-deck-video-toggle" id="inline-video-toggle-btn" onclick="toggleInlineAutoplay()">
+                <span id="inline-video-icon">▶</span>
+                <span id="inline-video-label">Video / Avto-Play Taqdimot</span>
+              </button>
+
+              <button class="btn-deck-launch" onclick="openPitchDeckModal(inlineCurrentIndex)">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <polygon points="5 3 19 12 5 21 5 3"></polygon>
                 </svg>
-                <span>TAQDIMOTNI KO'RISH (RASMLAR & VIDEO REJIM)</span>
+                <span>To'liq Ekranda Ko'rish ↗</span>
               </button>
             </div>
           </div>
 
-          <div class="deck-banner-visual" onclick="openPitchDeckModal(0)" title="Prezentatsiyani ochish uchun bosing">
-            <img src="assets/project-pitchdeck.jpg" alt="Harvard BBA & AI Global Venture Pitch Deck">
-            <div class="deck-visual-overlay">
-              <span class="deck-overlay-badge">▶ Video Rejim & HD Rasmlar • Ochish ↗</span>
+          <!-- Embedded Cinematic Media Screen Stage -->
+          <div class="inline-media-stage" id="inline-stage-wrapper">
+            <img src="assets/hero.jpg" alt="Muhammadrizo Xayrullayev" class="inline-stage-img" id="inline-stage-img">
+            <div class="inline-stage-overlay">
+              <div class="inline-stage-topbar">
+                <span class="inline-stage-tag" id="inline-stage-tag">SLAYD 1: 16 YOSHLI INNOVATOR</span>
+                <button class="inline-stage-expand-btn" onclick="openPitchDeckModal(inlineCurrentIndex)" title="To'liq ekranda ochish">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <polyline points="9 21 3 21 3 15"></polyline>
+                    <line x1="21" y1="3" x2="14" y2="10"></line>
+                    <line x1="3" y1="21" x2="10" y2="14"></line>
+                  </svg>
+                  <span>Kattalashtirish</span>
+                </button>
+              </div>
+
+              <div class="inline-stage-bottom">
+                <div class="inline-stage-caption" id="inline-stage-caption">
+                  Muhammadrizo Xayrullayev — 16 yoshli innovator, Qorako'l maktabi 10-sinf o'quvchisi va yosh tadbirkor.
+                </div>
+                <div class="inline-stage-nav-row">
+                  <button class="inline-nav-arrow" onclick="prevInlineSlide()" title="Oldingi slayd">◀</button>
+                  <div class="inline-stage-progress-bar">
+                    <div class="inline-stage-progress-fill" id="inline-stage-progress" style="width: 20%;"></div>
+                  </div>
+                  <button class="inline-nav-arrow" onclick="nextInlineSlide()" title="Keyingi slayd">▶</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

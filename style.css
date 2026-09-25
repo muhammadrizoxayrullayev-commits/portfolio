@@ -2852,34 +2852,34 @@ main {
    ABOUT EXTENSION: HARVARD BBA PITCH DECK SHOWCASE BANNER
    ========================================================================== */
 .about-pitchdeck-banner {
-  background: linear-gradient(135deg, rgba(25, 20, 32, 0.85) 0%, rgba(14, 14, 22, 0.9) 100%);
-  border: 1px solid rgba(255, 170, 0, 0.35);
-  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(22, 18, 30, 0.95) 0%, rgba(12, 12, 18, 0.98) 100%);
+  border: 1px solid rgba(255, 170, 0, 0.38);
+  border-radius: 22px;
   padding: 2.2rem;
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.05fr 1fr;
   gap: 2.2rem;
   align-items: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 170, 0, 0.12);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(255, 170, 0, 0.12);
 }
 
 .about-pitchdeck-banner::before {
   content: '';
   position: absolute;
-  top: -50px;
-  right: -50px;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(255, 170, 0, 0.18), transparent 70%);
+  top: -60px;
+  right: -60px;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(255, 170, 0, 0.2), transparent 70%);
   pointer-events: none;
 }
 
 .deck-banner-content {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
 .deck-tag-pill {
@@ -2899,46 +2899,100 @@ main {
 
 .deck-banner-title {
   font-family: var(--font-display);
-  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-  font-weight: 800;
+  font-size: clamp(1.4rem, 2.5vw, 1.95rem);
+  font-weight: 900;
   line-height: 1.25;
   color: #ffffff;
 }
 
 .deck-banner-desc {
-  font-size: 0.93rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
-.deck-highlights-row {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
+/* 5 Interactive Thumbnail Cards */
+.inline-deck-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
   margin-top: 0.4rem;
 }
 
-.deck-mini-feat {
+.inline-deck-card {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
-  color: #f1f5f9;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.03);
-  padding: 6px 10px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+.inline-deck-card:hover {
+  background: rgba(255, 85, 0, 0.1);
+  border-color: rgba(255, 85, 0, 0.4);
+  transform: translateX(4px);
+}
+.inline-deck-card.active {
+  background: rgba(255, 170, 0, 0.15);
+  border-color: #ffaa00;
+  box-shadow: 0 0 16px rgba(255, 170, 0, 0.3);
 }
 
-.deck-mini-feat span {
+.inline-deck-thumb {
+  width: 52px;
+  height: 42px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.inline-deck-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.inline-deck-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.inline-deck-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+.inline-deck-card.active .inline-deck-title {
   color: #ffaa00;
+}
+.inline-deck-sub {
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+}
+
+.inline-deck-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+}
+.inline-deck-card.active .inline-deck-badge {
+  background: #ffaa00;
+  color: #000000;
 }
 
 .deck-banner-actions {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-top: 0.8rem;
+  margin-top: 0.6rem;
   flex-wrap: wrap;
 }
 
@@ -2948,7 +3002,7 @@ main {
   border: none;
   font-weight: 800;
   font-size: 0.88rem;
-  padding: 0.85rem 1.6rem;
+  padding: 0.8rem 1.4rem;
   border-radius: 12px;
   cursor: pointer;
   display: inline-flex;
@@ -2962,46 +3016,151 @@ main {
   box-shadow: 0 10px 28px rgba(255, 85, 0, 0.6);
 }
 
-.deck-banner-visual {
-  position: relative;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(255, 170, 0, 0.3);
+.btn-deck-video-toggle {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 170, 0, 0.4);
+  color: #ffaa00;
+  font-weight: 800;
+  font-size: 0.84rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-smooth);
+}
+.btn-deck-video-toggle:hover, .btn-deck-video-toggle.playing {
+  background: #ffaa00;
+  color: #000000;
+  box-shadow: 0 0 16px rgba(255, 170, 0, 0.5);
 }
 
-.deck-banner-visual img {
+/* Embedded Media Screen Stage */
+.inline-media-stage {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 170, 0, 0.4);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 85, 0, 0.2);
+  background: #000000;
+  aspect-ratio: 16 / 11;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inline-stage-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease;
+  transition: transform 5s ease, opacity 0.35s ease;
 }
 
-.deck-banner-visual:hover img {
-  transform: scale(1.04);
-}
-
-.deck-visual-overlay {
+.inline-stage-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.85) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 40%, rgba(0,0,0,0.88) 100%);
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 1.2rem;
+  pointer-events: none;
 }
 
-.deck-overlay-badge {
+.inline-stage-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  pointer-events: auto;
+}
+
+.inline-stage-tag {
   background: rgba(0, 0, 0, 0.75);
   border: 1px solid rgba(255, 170, 0, 0.5);
   color: #ffaa00;
-  font-size: 0.78rem;
-  font-weight: 700;
-  padding: 6px 12px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  padding: 4px 10px;
   border-radius: 8px;
   backdrop-filter: blur(8px);
 }
+
+.inline-stage-expand-btn {
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 5px 11px;
+  border-radius: 8px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: var(--transition-smooth);
+}
+.inline-stage-expand-btn:hover {
+  background: #ff5500;
+  border-color: #ff5500;
+}
+
+.inline-stage-bottom {
+  pointer-events: auto;
+}
+
+.inline-stage-caption {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+}
+
+.inline-stage-nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.inline-nav-arrow {
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  font-size: 0.82rem;
+}
+.inline-nav-arrow:hover {
+  background: #ff5500;
+  border-color: #ff5500;
+  transform: scale(1.1);
+}
+
+.inline-stage-progress-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.inline-stage-progress-fill {
+  height: 100%;
+  width: 20%;
+  background: linear-gradient(90deg, #ff5500, #ffaa00);
+  transition: width 0.3s ease;
+}
+
 
 /* ==========================================================================
    ABOUT EXTENSION: INNOVATION & GROWTH TIMELINE

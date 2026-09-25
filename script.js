@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPortfolioFilter();
   initAITerminal();
   initPitchDeckSystem();
+  initInlineDeckSystem();
   initQASystem();
   initModals();
   initQRCodeFeature();
@@ -1032,5 +1033,123 @@ function initPitchDeckSystem() {
     }
   });
 }
+
+/* ==========================================================================
+   11. INLINE EMBEDDED PRESENTATION DECK (ON-PAGE LIVE SHOWCASE)
+   ========================================================================== */
+window.inlineCurrentIndex = 0;
+
+const inlineSlideData = [
+  {
+    img: 'assets/hero.jpg',
+    tag: 'SLAYD 1: 16 YOSHLI INNOVATOR',
+    caption: 'Muhammadrizo Xayrullayev — 16 yoshli innovator, Qorako\'l maktabi 10-sinf o\'quvchisi va yosh tadbirkor.'
+  },
+  {
+    img: 'assets/project-agent.jpg',
+    tag: 'SLAYD 2: KO\'P AGENTLI AI TIZIMI',
+    caption: 'Nexus Multi-Agent: LangChain asosida bozor tahlili va 24/7 topshiriqlarni avtonom bajaruvchi AI tizimi.'
+  },
+  {
+    img: 'assets/project-brand.jpg',
+    tag: 'SLAYD 3: 2 YILLIK TELEGRAM SAVDO',
+    caption: 'Telegram E-Commerce: 2024-yildan buyon mahsulot savdosi, mijozlar bazasi va barqaror savdo oqimi.'
+  },
+  {
+    img: 'assets/taekwondo-medals.jpg',
+    tag: 'SLAYD 4: SPORT MEDALLARI & 2 MLN YUTUQ',
+    caption: 'Taekwondo chempionati medallari, temir intizom va Robototexnika tanlovidagi 2 000 000 so\'mlik sovrin.'
+  },
+  {
+    img: 'assets/project-pitchdeck.jpg',
+    tag: 'SLAYD 5: HARVARD BBA GLOBAL REJA',
+    caption: 'Garvard (Harvard) va AQSh TOP universitetlari BBA darajasi hamda global AI startaplar yo\'l xaritasi.'
+  }
+];
+
+let inlineAutoplayTimer = null;
+let isInlineAutoplaying = false;
+
+window.setInlineDeckSlide = function(idx) {
+  if (idx < 0 || idx >= inlineSlideData.length) return;
+  window.inlineCurrentIndex = idx;
+
+  const data = inlineSlideData[idx];
+  const imgEl = document.getElementById('inline-stage-img');
+  const tagEl = document.getElementById('inline-stage-tag');
+  const captionEl = document.getElementById('inline-stage-caption');
+  const progressEl = document.getElementById('inline-stage-progress');
+  const cards = document.querySelectorAll('.inline-deck-card');
+
+  // Update active card on the left
+  cards.forEach((card, i) => {
+    if (i === idx) {
+      card.classList.add('active');
+    } else {
+      card.classList.remove('active');
+    }
+  });
+
+  // Smooth image swap with slight zoom animation
+  if (imgEl) {
+    imgEl.style.opacity = '0.4';
+    imgEl.style.transform = 'scale(1.01)';
+    setTimeout(() => {
+      imgEl.src = data.img;
+      imgEl.style.opacity = '1';
+      imgEl.style.transform = 'scale(1.04)';
+    }, 180);
+  }
+
+  if (tagEl) tagEl.textContent = data.tag;
+  if (captionEl) captionEl.textContent = data.caption;
+  if (progressEl) progressEl.style.width = `${((idx + 1) / inlineSlideData.length) * 100}%`;
+
+  playCyberSound('whoosh');
+};
+
+window.nextInlineSlide = function() {
+  const nextIdx = (window.inlineCurrentIndex + 1) % inlineSlideData.length;
+  window.setInlineDeckSlide(nextIdx);
+};
+
+window.prevInlineSlide = function() {
+  const prevIdx = (window.inlineCurrentIndex - 1 + inlineSlideData.length) % inlineSlideData.length;
+  window.setInlineDeckSlide(prevIdx);
+};
+
+window.toggleInlineAutoplay = function() {
+  const btn = document.getElementById('inline-video-toggle-btn');
+  const icon = document.getElementById('inline-video-icon');
+  const label = document.getElementById('inline-video-label');
+
+  if (isInlineAutoplaying) {
+    // Stop autoplay
+    clearInterval(inlineAutoplayTimer);
+    inlineAutoplayTimer = null;
+    isInlineAutoplaying = false;
+    if (btn) btn.classList.remove('playing');
+    if (icon) icon.textContent = '▶';
+    if (label) label.textContent = 'Video / Avto-Play Taqdimot';
+    playCyberSound('click');
+  } else {
+    // Start autoplay
+    isInlineAutoplaying = true;
+    if (btn) btn.classList.add('playing');
+    if (icon) icon.textContent = '⏸';
+    if (label) label.textContent = 'Pauza (To\'xtatish)';
+    playCyberSound('success');
+
+    inlineAutoplayTimer = setInterval(() => {
+      window.nextInlineSlide();
+    }, 4200);
+  }
+};
+
+function initInlineDeckSystem() {
+  // Set initial state
+  window.setInlineDeckSlide(0);
+}
+
 
 
