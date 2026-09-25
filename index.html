@@ -459,29 +459,29 @@
         <div class="about-pitchdeck-banner" id="pitchdeck-feature">
           <div class="deck-banner-content">
             <div class="deck-tag-pill">
-              <span>🇺🇸</span>
-              <span>HARVARD BBA & AI VENTURE PITCH DECK</span>
+              <span>🎬</span>
+              <span>MULTIMEDIA PITCH DECK • VIDEO REJIM</span>
             </div>
             <h3 class="deck-banner-title">
               Sun'iy Intellekt & Global Biznes: <br>
-              <span class="glow-gradient-text">5 Slaydli Strategik Taqdimot</span>
+              <span class="glow-gradient-text">Jonli Rasmli & Video Taqdimot</span>
             </h3>
             <p class="deck-banner-desc">
-              Garvard (Harvard University) BBA darajasi yo'nalishidagi tayyorgarlik, 16 yoshli innovator falsafasi, ko'p agentli AI tizimlari, 2 yillik Telegram e-commerce va global investitsiya yo'l xaritasi jamlangan maxsus interaktiv prezentatsiya.
+              Har bir slayd uchun maxsus HD tasvirlar, Taekwondo va robototexnika sertifikati, ko'p agentli AI arxitekturasi hamda avtomatik video taqdimot rejimi jamlangan interaktiv multimedia taqdimoti.
             </p>
 
             <div class="deck-highlights-row">
               <div class="deck-mini-feat">
-                <span>✦</span> 1-Slayd: 16 Yoshli Innovator Missiyasi
+                <span>📸</span> Har Bir Slaydda HD Tasvirlar
               </div>
               <div class="deck-mini-feat">
-                <span>✦</span> 2-Slayd: Multi-Agent AI Texnologiyalari
+                <span>▶</span> Avtomatik Video / Slayd-Show
               </div>
               <div class="deck-mini-feat">
-                <span>✦</span> 3-Slayd: 2 Yillik Telegram Savdo Natijalari
+                <span>🥋</span> Taekwondo & 2 Mln Sovrin Rasmlari
               </div>
               <div class="deck-mini-feat">
-                <span>✦</span> 4-Slayd: Robototexnika (2 mln) & Taekwondo
+                <span>🇺🇸</span> Harvard BBA & Global Reja
               </div>
             </div>
 
@@ -490,7 +490,7 @@
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <polygon points="5 3 19 12 5 21 5 3"></polygon>
                 </svg>
-                <span>INTERAKTIV PREZENTATSIYANI KO'RISH (SLIDE DECK)</span>
+                <span>TAQDIMOTNI KO'RISH (RASMLAR & VIDEO REJIM)</span>
               </button>
             </div>
           </div>
@@ -498,7 +498,7 @@
           <div class="deck-banner-visual" onclick="openPitchDeckModal(0)" title="Prezentatsiyani ochish uchun bosing">
             <img src="assets/project-pitchdeck.jpg" alt="Harvard BBA & AI Global Venture Pitch Deck">
             <div class="deck-visual-overlay">
-              <span class="deck-overlay-badge">📊 Interaktiv 5 Slaydli Deck • Kattalashtirish ↗</span>
+              <span class="deck-overlay-badge">▶ Video Rejim & HD Rasmlar • Ochish ↗</span>
             </div>
           </div>
         </div>
@@ -1235,6 +1235,10 @@
         <div class="deck-title-area">
           <span class="deck-univ-badge">HARVARD BBA ROADMAP</span>
           <span class="deck-indicator-text" id="deck-slide-indicator">Slayd 1 / 5</span>
+          <button class="deck-autoplay-btn" id="deck-autoplay-btn" title="Avtomatik video rejimda tomosha qilish">
+            <span id="deck-play-icon">▶</span>
+            <span id="deck-play-text">Video / Avto-Play</span>
+          </button>
         </div>
         <button class="modal-close-btn" id="close-pitchdeck-modal" style="position:static; margin:0;" aria-label="Yopish">✕</button>
       </div>
@@ -1245,127 +1249,185 @@
 
       <!-- Slide Stage -->
       <div class="deck-slide-stage">
-        <!-- Slide 1 -->
+        <!-- Slide 1: Profile & Identity -->
         <div class="deck-slide active" data-slide="0">
-          <div class="slide-category-tag">01 / KIRISH VA ASOSIY MISSIYA</div>
-          <h3 class="slide-main-title">Muhammadrizo Xayrullayev: <span class="glow-gradient-text">16 Yoshli AI Innovator & Tadbirkor</span></h3>
-          <p class="slide-lead">O'zbekistondagi eng yetakchi aniq fanlar maskani bo'lgan Qorako'l maktabi 10-sinf o'quvchisi, Sun'iy Intellekt muhandisi, 2 yillik Telegram raqamli biznes egasi va Taekwondo sovrindori.</p>
-          <div class="slide-grid-content">
-            <div class="slide-box-card">
-              <h4><span>🎓</span> Qorako'l Maktabi (10-sinf)</h4>
-              <p>Aniq fanlar, chuqurlashtirilgan matematika va qat'iy algoritmik mantiqiy asoslar.</p>
+          <div class="deck-slide-split">
+            <div class="deck-media-panel">
+              <img src="assets/hero.jpg" alt="Muhammadrizo Xayrullayev" class="deck-media-img">
+              <div class="deck-media-overlay">
+                <span class="deck-media-tag-top">16 YOSHLI YOSH INNOVATOR</span>
+                <span class="deck-media-tag-bottom">🎓 Qorako'l Maktabi (10-sinf) • Harvard BBA Goal</span>
+              </div>
             </div>
-            <div class="slide-box-card">
-              <h4><span>🤖</span> Sun'iy Intellekt & Botlar</h4>
-              <p>Telegram platformasida LLM va ko'p agentli aqlli tizimlarni amaliy ishlab chiqish.</p>
-            </div>
-            <div class="slide-box-card">
-              <h4><span>📈</span> 2 Yillik E-Commerce</h4>
-              <p>Telegram tarmog'ida mahsulot savdosi, mijozlar oqimi va real moliyaviy amaliyot.</p>
-            </div>
-            <div class="slide-box-card">
-              <h4><span>🇺🇸</span> Harvard BBA Intilishi</h4>
-              <p>AQShning nufuzli universitetlarida Biznes boshqaruvi (BBA) darajasini egallash maqsadi.</p>
+            <div class="deck-info-panel">
+              <div class="slide-category-tag">01 / KIRISH VA ASOSIY MISSIYA</div>
+              <h3 class="slide-main-title">Muhammadrizo Xayrullayev: <span class="glow-gradient-text">AI Innovator & Tadbirkor</span></h3>
+              <p class="slide-lead">Qorako'l maktabi 10-sinf o'quvchisi, amaliy Sun'iy Intellekt muhandisi, 2 yillik Telegram biznes egasi va Taekwondo sovrindori.</p>
+              <div class="slide-grid-content">
+                <div class="slide-box-card">
+                  <h4><span>🎓</span> Qorako'l Maktabi</h4>
+                  <p>Aniq fanlar, chuqur matematika va algoritmik mantiqiy asoslar.</p>
+                </div>
+                <div class="slide-box-card">
+                  <h4><span>🤖</span> Sun'iy Intellekt</h4>
+                  <p>Telegram platformasida LLM va ko'p agentli aqlli tizimlar.</p>
+                </div>
+                <div class="slide-box-card">
+                  <h4><span>📈</span> 2 Yillik Savdo</h4>
+                  <p>Telegram e-commerce orqali mahsulot savdosi va real daromad.</p>
+                </div>
+                <div class="slide-box-card">
+                  <h4><span>🇺🇸</span> Harvard BBA</h4>
+                  <p>AQShning nufuzli TOP universitetlarida Biznes boshqaruvi maqsadi.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Slide 2 -->
+        <!-- Slide 2: AI Multi-Agent Architecture -->
         <div class="deck-slide" data-slide="1">
-          <div class="slide-category-tag">02 / TEXNOLOGIK ARXITEKTURA</div>
-          <h3 class="slide-main-title">Ko'p Agentli AI & <span class="glow-gradient-text">Neyrotarmoqlar Ekotizimi</span></h3>
-          <p class="slide-lead">Avtonom ishlovchi Sun'iy Intellekt agentlari, kompyuter ko'rishi va o'zbek tilidagi nutq modellarining integratsiyalashgan arxitekturasi.</p>
-          <div class="slide-grid-content">
-            <div class="slide-box-card">
-              <h4><span>⚡</span> Nexus Multi-Agent</h4>
-              <p>LangChain asosida bozor tahlili va topshiriqlarni inson omilisiz 24/7 bajaruvchi avtonom agentlar.</p>
+          <div class="deck-slide-split">
+            <div class="deck-media-panel">
+              <img src="assets/project-agent.jpg" alt="AI Multi-Agent Architecture" class="deck-media-img">
+              <div class="deck-media-overlay">
+                <span class="deck-media-tag-top">AUTONOMOUS MULTI-AGENT AI</span>
+                <span class="deck-media-tag-bottom">⚡ LangChain & LLM Chaining • 24/7 Monitoring</span>
+              </div>
             </div>
-            <div class="slide-box-card">
-              <h4><span>👁️</span> Vision & 3D Lidar</h4>
-              <p>YOLOv8 va fazoviy lidar telemetriyasi orqali ob'ektlarni saralash (2 mln sovrindor loyiha bazasi).</p>
-            </div>
-            <div class="slide-box-card">
-              <h4><span>🎙️</span> VoiceGenius Uzbek AI</h4>
-              <p>Whisper neyron modeli orqali o'zbek tilidagi nutqni anglash va insondek tabiiy ovozda muloqot qilish.</p>
-            </div>
-            <div class="slide-box-card">
-              <h4><span>💬</span> Telegram Bot API</h4>
-              <p>Mijozlar bilan avtomatik sotuv va texnik ko'makni ta'minlovchi generativ intellektual botlar.</p>
+            <div class="deck-info-panel">
+              <div class="slide-category-tag">02 / TEXNOLOGIK ARXITEKTURA</div>
+              <h3 class="slide-main-title">Ko'p Agentli AI & <span class="glow-gradient-text">Neyrotarmoqlar Ekotizimi</span></h3>
+              <p class="slide-lead">Bozor tahlili, ma'lumotlar oqimi va murakkab biznes topshiriqlarini avtonom bajaruvchi ko'p agentli aqlli tizim.</p>
+              <div class="slide-grid-content">
+                <div class="slide-box-card">
+                  <h4><span>⚡</span> Nexus Multi-Agent</h4>
+                  <p>Inson omilisiz 24/7 rejimda vazifalarni bajaruvchi avtonom agentlar.</p>
+                </div>
+                <div class="slide-box-card">
+                  <h4><span>👁️</span> Vision & 3D Lidar</h4>
+                  <p>YOLOv8 va fazoviy lidar telemetriyasi orqali ob'ektlarni saralash.</p>
+                </div>
+                <div class="slide-box-card">
+                  <h4><span>🎙️</span> VoiceGenius Uzbek AI</h4>
+                  <p>Whisper modeli orqali o'zbek tilidagi ovozni tushunish va javob berish.</p>
+                </div>
+                <div class="slide-box-card">
+                  <h4><span>💬</span> Telegram Bot API</h4>
+                  <p>Mijozlarga avtomatik xizmat ko'rsatuvchi generativ intellektual botlar.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Slide 3 -->
+        <!-- Slide 3: Telegram E-Commerce Business -->
         <div class="deck-slide" data-slide="2">
-          <div class="slide-category-tag">03 / AMALIY TADBIRKORLIK</div>
-          <h3 class="slide-main-title">Telegram E-Commerce: <span class="glow-gradient-text">2 Yillik Real Savdo Tajribasi</span></h3>
-          <p class="slide-lead">Nazariya emas — 2024-yildan buyon Telegram tarmog'ida muvaffaqiyatli ishlayotgan mahsulot savdosi va xaridorlar psixologiyasini boshqarish amaliyoti.</p>
-          <div class="slide-grid-content">
-            <div class="slide-box-card">
-              <h4><span>📊</span> 2 Yillik Barqaror Oqim</h4>
-              <p>Mahsulotlar katalogi, xaridorlar bilan professional muloqot va doimiy sotuv tizimi.</p>
+          <div class="deck-slide-split">
+            <div class="deck-media-panel">
+              <img src="assets/project-brand.jpg" alt="Telegram E-Commerce 2 Yillik Savdo" class="deck-media-img">
+              <div class="deck-media-overlay">
+                <span class="deck-media-tag-top">2 YILLIK REAL BIZNES (2024-2026)</span>
+                <span class="deck-media-tag-bottom">📈 Barqaror Savdo Oqimi & Xaridorlar Bazasi</span>
+              </div>
             </div>
-            <div class="slide-box-card">
-              <h4><span>🎯</span> Sotuv Voronkalari</h4>
-              <p>Telegram kanallari orqali mijozlarni jalb qilish va yuqori konversiyali takliflar mexanizmi.</p>
-            </div>
-            <div class="slide-box-card">
-              <h4><span>💡</span> Doimiy Mijozlar Bazasi</h4>
-              <p>Sifatli xizmat ko'rsatish orqali doimiy qayta xarid qiluvchi ishonchli mijozlar auditoriyasi.</p>
-            </div>
-            <div class="slide-box-card">
-              <h4><span>💵</span> Moliyaviy Intizom</h4>
-              <p>Foydani reinvestitsiya qilish, xarajatlar auditi va mustaqil biznes boshqaruv tajribasi.</p>
+            <div class="deck-info-panel">
+              <div class="slide-category-tag">03 / AMALIY TADBIRKORLIK</div>
+              <h3 class="slide-main-title">Telegram E-Commerce: <span class="glow-gradient-text">2 Yillik Real Savdo</span></h3>
+              <p class="slide-lead">Nazariya emas — 2024-yildan buyon Telegram platformasida muvaffaqiyatli ishlayotgan mahsulot savdosi va mijozlar psixologiyasi.</p>
+              <div class="slide-grid-content">
+                <div class="slide-box-card">
+                  <h4><span>📊</span> 2 Yillik Oqim</h4>
+                  <p>Mahsulotlar katalogi, xaridorlar muloqoti va doimiy sotuv tizimi.</p>
+                </div>
+                <div class="slide-box-card">
+                  <h4><span>🎯</span> Sotuv Voronkasi</h4>
+                  <p>Telegram kanallari orqali mijozlarni jalb qilish va konversiya.</p>
+                </div>
+                <div class="slide-box-card">
+                  <h4><span>💡</span> Mijozlar Sadoqati</h4>
+                  <p>Sifatli servis orqali qayta xarid qiluvchi ishonchli xaridorlar.</p>
+                </div>
+                <div class="slide-box-card">
+                  <h4><span>💵</span> Moliyaviy Nazorat</h4>
+                  <p>Tushumlar auditi, reinvestitsiya va mustaqil biznes boshqaruvi.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Slide 4 -->
+        <!-- Slide 4: Taekwondo & 2 Mln Robotics Award (With Interactive Media Switcher) -->
         <div class="deck-slide" data-slide="3">
-          <div class="slide-category-tag">04 / INTIZOM VA SOVRINLAR</div>
-          <h3 class="slide-main-title">Taekwondo Intizomi & <span class="glow-gradient-text">Robototexnika (2 Mln Sovrin)</span></h3>
-          <p class="slide-lead">Muvaffaqiyat poydevori — sportdagi temir intizom, muhandislik salohiyati va har kuni o'z ustida tinimsiz ishlash ko'nikmasidir.</p>
-          <div class="slide-grid-content">
-            <div class="slide-box-card">
-              <h4><span>🥋</span> Taekwondo Medallari</h4>
-              <p>Bir nechta chempionat medallari sohibi. Sport menga iroda, stressga chidamlilik va intizomni bergan.</p>
+          <div class="deck-slide-split">
+            <div class="deck-media-panel" id="deck-slide4-media-panel">
+              <img src="assets/taekwondo-medals.jpg" alt="Taekwondo Medallari" class="deck-media-img" id="deck-slide4-img">
+              <div class="deck-media-overlay">
+                <div class="media-switch-bar" style="pointer-events:auto;">
+                  <button class="media-tab-btn active" id="tab-btn-tkd" onclick="switchSlide4Media('tkd')">🥋 Taekwondo Medallari</button>
+                  <button class="media-tab-btn" id="tab-btn-robot" onclick="switchSlide4Media('robot')">🦾 2 Mln Sovrin Sertifikati</button>
+                </div>
+                <span class="deck-media-tag-bottom" id="deck-slide4-tag">🥇 Taekwondo Musobaqalari Medali & Temir Intizom</span>
+              </div>
             </div>
-            <div class="slide-box-card">
-              <h4><span>🦾</span> 2 000 000 So'm Mukofot</h4>
-              <p>Robototexnika tanlovida bosh mukofot, diplom va mutaxassislik sertifikatlari bilan taqdirlanish.</p>
-            </div>
-            <div class="slide-box-card">
-              <h4><span>⚡</span> Muhandislik Mantiqi</h4>
-              <p>Datchiklar, mikrokontrollerlar va dasturiy boshqaruv bloklarini mustaqil integratsiya qilish.</p>
-            </div>
-            <div class="slide-box-card">
-              <h4><span>⏰</span> Temir Vaqt Taqsimoti</h4>
-              <p>Qorako'l maktabi, sport mashg'ulotlari, tadbirkorlik va AI dasturlashni muvozanatda ushlash.</p>
+            <div class="deck-info-panel">
+              <div class="slide-category-tag">04 / INTIZOM VA SOVRINLAR</div>
+              <h3 class="slide-main-title">Taekwondo Intizomi & <span class="glow-gradient-text">Robototexnika (2 Mln)</span></h3>
+              <p class="slide-lead">Muvaffaqiyat poydevori — sportdagi temir intizom, muhandislik salohiyati va har kuni o'z ustida tinimsiz ishlash ko'nikmasidir.</p>
+              <div class="slide-grid-content">
+                <div class="slide-box-card">
+                  <h4><span>🥋</span> Taekwondo Medallari</h4>
+                  <p>Bir nechta chempionat medallari. Sport menga iroda va chidamlilikni bergan.</p>
+                </div>
+                <div class="slide-box-card">
+                  <h4><span>🦾</span> 2 000 000 So'm Mukofot</h4>
+                  <p>Robototexnika tanlovida bosh sovrin, diplom va rasmiy sertifikatlar.</p>
+                </div>
+                <div class="slide-box-card">
+                  <h4><span>⚡</span> Muhandislik Mantiqi</h4>
+                  <p>Datchiklar, mikrokontrollerlar va aqlli sensorlar bilan amaliy ishlanma.</p>
+                </div>
+                <div class="slide-box-card">
+                  <h4><span>⏰</span> Qat'iy Kun Tartibi</h4>
+                  <p>Qorako'l maktabi, sport, savdo va AI dasturlashni muvozanatda ushlash.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Slide 5 -->
+        <!-- Slide 5: Harvard & Global Roadmap -->
         <div class="deck-slide" data-slide="4">
-          <div class="slide-category-tag">05 / GLOBAL KELAJAK YO'L XARITASI</div>
-          <h3 class="slide-main-title">Harvard BBA & <span class="glow-gradient-text">Global AI Startaplar (2026-2030)</span></h3>
-          <p class="slide-lead">Mahalliy yosh liderlikdan jahon darajasidagi global texnologiya kompaniyalarigacha bo'lgan strategik yo'l xaritasi.</p>
-          <div class="slide-grid-content">
-            <div class="slide-box-card">
-              <h4><span>🇺🇸</span> Harvard & US Top Uni</h4>
-              <p>Fluent English va yetakchilik salohiyati bilan AQShning TOP universitetlarida BBA darajasini olish.</p>
+          <div class="deck-slide-split">
+            <div class="deck-media-panel">
+              <img src="assets/project-pitchdeck.jpg" alt="Harvard BBA Auditorium Pitch" class="deck-media-img">
+              <div class="deck-media-overlay">
+                <span class="deck-media-tag-top">HARVARD BUSINESS SCHOOL ROADMAP</span>
+                <span class="deck-media-tag-bottom">🌐 Global Venture Strategy • 2026-2030</span>
+              </div>
             </div>
-            <div class="slide-box-card">
-              <h4><span>🌐</span> Global AI Startap</h4>
-              <p>Sun'iy intellekt va raqamli savdoni uyg'unlashtirgan xalqaro SaaS platformalarini yo'lga qo'yish.</p>
-            </div>
-            <div class="slide-box-card">
-              <h4><span>🤝</span> Venchur Hamkorliklar</h4>
-              <p>Silikon vodiysi va jahon investitsiya fondlari bilan xalqaro darajada mustahkam aloqalar o'rnatish.</p>
-            </div>
-            <div class="slide-box-card">
-              <h4><span>🇺🇿</span> O'zbekiston IT Rivoji</h4>
-              <p>Xalqaro bilimlarni vatanimizga jalb qilib, yosh dasturchi va innovatorlarni qo'llab-quvvatlash.</p>
+            <div class="deck-info-panel">
+              <div class="slide-category-tag">05 / GLOBAL KELAJAK YO'L XARITASI</div>
+              <h3 class="slide-main-title">Harvard BBA & <span class="glow-gradient-text">Global Startaplar (2026-2030)</span></h3>
+              <p class="slide-lead">16 yoshli mahalliy yosh innovatorlikdan dunyo darajasidagi global texnologiya kompaniyalarigacha bo'lgan strategik yo'l.</p>
+              <div class="slide-grid-content">
+                <div class="slide-box-card">
+                  <h4><span>🇺🇸</span> Harvard BBA</h4>
+                  <p>Fluent English va yetakchilik salohiyati bilan AQSh TOP universitetlariga kirish.</p>
+                </div>
+                <div class="slide-box-card">
+                  <h4><span>🌐</span> Global AI Startap</h4>
+                  <p>Sun'iy intellekt va raqamli savdoni birlashtirgan xalqaro SaaS platformalar.</p>
+                </div>
+                <div class="slide-box-card">
+                  <h4><span>🤝</span> Venchur Hamkorliklar</h4>
+                  <p>Silikon vodiysi va jahon investitsiya fondlari bilan xalqaro darajada aloqalar.</p>
+                </div>
+                <div class="slide-box-card">
+                  <h4><span>🇺🇿</span> O'zbekiston IT Rivoji</h4>
+                  <p>Xalqaro bilimlarni vatanimizga olib kelib, yosh innovatorlarni qo'llab-quvvatlash.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

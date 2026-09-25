@@ -917,6 +917,74 @@ window.prevDeckSlide = function() {
   }
 };
 
+/* Media Switcher for Slide 4 (Taekwondo vs Robotics Certificate) */
+window.switchSlide4Media = function(type) {
+  const img = document.getElementById('deck-slide4-img');
+  const tag = document.getElementById('deck-slide4-tag');
+  const btnTkd = document.getElementById('tab-btn-tkd');
+  const btnRobot = document.getElementById('tab-btn-robot');
+
+  if (type === 'tkd') {
+    if (img) img.src = 'assets/taekwondo-medals.jpg';
+    if (tag) tag.textContent = '🥇 Taekwondo Musobaqalari Medali & Temir Intizom';
+    if (btnTkd) btnTkd.classList.add('active');
+    if (btnRobot) btnRobot.classList.remove('active');
+    playCyberSound('click');
+  } else if (type === 'robot') {
+    if (img) img.src = 'assets/award.jpg';
+    if (tag) tag.textContent = '🏆 2 000 000 So\'m Robototexnika Tanlovi Sovrini & Sertifikat';
+    if (btnRobot) btnRobot.classList.add('active');
+    if (btnTkd) btnTkd.classList.remove('active');
+    playCyberSound('beep');
+  }
+};
+
+/* Autoplay / Video Presentation Mode */
+let autoplayInterval = null;
+let isDeckAutoplaying = false;
+
+function stopDeckAutoplay() {
+  if (autoplayInterval) {
+    clearInterval(autoplayInterval);
+    autoplayInterval = null;
+  }
+  isDeckAutoplaying = false;
+  const btn = document.getElementById('deck-autoplay-btn');
+  const icon = document.getElementById('deck-play-icon');
+  const text = document.getElementById('deck-play-text');
+  if (btn) btn.classList.remove('playing');
+  if (icon) icon.textContent = '▶';
+  if (text) text.textContent = 'Video / Avto-Play';
+}
+
+function startDeckAutoplay() {
+  isDeckAutoplaying = true;
+  const btn = document.getElementById('deck-autoplay-btn');
+  const icon = document.getElementById('deck-play-icon');
+  const text = document.getElementById('deck-play-text');
+  if (btn) btn.classList.add('playing');
+  if (icon) icon.textContent = '⏸';
+  if (text) text.textContent = 'Pauza';
+  playCyberSound('success');
+
+  autoplayInterval = setInterval(() => {
+    if (currentDeckSlide < totalDeckSlides - 1) {
+      window.nextDeckSlide();
+    } else {
+      window.jumpToDeckSlide(0);
+    }
+  }, 5200);
+}
+
+window.toggleDeckAutoplay = function() {
+  if (isDeckAutoplaying) {
+    stopDeckAutoplay();
+    playCyberSound('click');
+  } else {
+    startDeckAutoplay();
+  }
+};
+
 window.openPitchDeckModal = function(initialIndex = 0) {
   const modal = document.getElementById('pitchdeck-modal');
   if (!modal) return;
@@ -929,9 +997,17 @@ window.openPitchDeckModal = function(initialIndex = 0) {
 function initPitchDeckSystem() {
   const modal = document.getElementById('pitchdeck-modal');
   const closeBtn = document.getElementById('close-pitchdeck-modal');
+  const autoplayBtn = document.getElementById('deck-autoplay-btn');
+
+  if (autoplayBtn) {
+    autoplayBtn.addEventListener('click', () => {
+      window.toggleDeckAutoplay();
+    });
+  }
 
   if (closeBtn && modal) {
     closeBtn.addEventListener('click', () => {
+      stopDeckAutoplay();
       modal.classList.remove('active');
       playCyberSound('click');
     });
@@ -940,6 +1016,7 @@ function initPitchDeckSystem() {
   if (modal) {
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
+        stopDeckAutoplay();
         modal.classList.remove('active');
       }
     });
@@ -955,4 +1032,5 @@ function initPitchDeckSystem() {
     }
   });
 }
+
 
