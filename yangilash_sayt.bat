@@ -22,10 +22,13 @@ if %ERRORLEVEL% EQU 0 (
     echo ================================================================
     echo    MUVAFFAQIYATLI YUKLANDI!
     echo.
-    echo    Sizning saytingiz 15-30 soniyada butun dunyo bo'yicha
-    echo    avtomatik tarzda yangilanadi:
+    echo    Sizning saytingiz va Vercel AI xizmatingiz 15-30 soniyada:
     echo.
-    echo    👉 https://muhammadrizoxayrullayev-commits.github.io/portfolio/
+    echo    1. GitHub Pages:
+    echo       👉 https://muhammadrizoxayrullayev-commits.github.io/portfolio/
+    echo.
+    echo    2. Vercel (Jonli Vercel AI bilan):
+    echo       👉 https://vercel.com/ (Loyiha bog'langandan so'ng avtomatik)
     echo ================================================================
 ) else (
     echo.

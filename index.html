@@ -427,7 +427,7 @@
             </div>
             <div class="terminal-live-badge">
               <span class="pulse-dot-green"></span>
-              <span>ONLINE • LLM ACTIVE</span>
+              <span>ONLINE • VERCEL AI CORE</span>
             </div>
           </div>
 
@@ -450,7 +450,7 @@
           <!-- Terminal User Input Bar -->
           <form class="terminal-input-bar" id="terminal-custom-form">
             <span class="terminal-prompt-sym">❯</span>
-            <input type="text" class="terminal-input" id="terminal-user-input" placeholder="Buyruq yozing (masalan: 'AI loyihalar haqida aytib ber' yoki 'biznes natijalari')..." autocomplete="off">
+            <input type="text" class="terminal-input" id="terminal-user-input" placeholder="Vercel AI dan so'rang (masalan: 'AI loyihalari', '2 yillik biznes', 'Garvard BBA')..." autocomplete="off">
             <button type="submit" class="terminal-send-btn">YUBORISH ↵</button>
           </form>
         </div>
@@ -1531,6 +1531,72 @@
           <span>▶</span>
         </button>
       </div>
+    </div>
+  </div>
+
+  <!-- Floating Vercel AI Chatbot Assistant -->
+  <div class="floating-ai-widget" id="floating-ai-widget">
+    <button class="floating-ai-trigger" id="floating-ai-trigger" aria-label="Vercel AI yordamchisi bilan suhbat" title="Vercel AI Assistent">
+      <div class="ai-trigger-pulse"></div>
+      <div class="ai-trigger-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path>
+          <rect x="4" y="8" width="16" height="12" rx="4"></rect>
+          <circle cx="9" cy="13" r="1.5" fill="currentColor"></circle>
+          <circle cx="15" cy="13" r="1.5" fill="currentColor"></circle>
+          <path d="M9 17c1.5 1 4.5 1 6 0"></path>
+        </svg>
+      </div>
+      <span class="ai-trigger-text">Vercel AI</span>
+      <span class="ai-trigger-badge">ONLINE</span>
+    </button>
+
+    <!-- Interactive Floating Chat Window -->
+    <div class="floating-ai-modal" id="floating-ai-modal" aria-hidden="true">
+      <div class="floating-ai-header">
+        <div class="ai-header-info">
+          <div class="ai-avatar-glow">🤖</div>
+          <div>
+            <h4 class="ai-header-name">Muhammadrizo AI</h4>
+            <span class="ai-header-status">
+              <span class="pulse-dot-green"></span> Vercel Serverless AI Active
+            </span>
+          </div>
+        </div>
+        <div class="ai-header-actions">
+          <button class="ai-clear-btn" id="ai-chat-clear-btn" title="Tozalash">🧹</button>
+          <button class="ai-close-btn" id="floating-ai-close-btn" title="Yopish" aria-label="Yopish">&times;</button>
+        </div>
+      </div>
+
+      <div class="floating-ai-body" id="floating-ai-body">
+        <div class="ai-msg ai-msg-bot">
+          <div class="ai-msg-bubble">
+            Assalomu alaykum! Men <strong>Muhammadrizo Xayrullayevning Vercel AI Assistentiman</strong>.
+            <br><br>
+            Men uning sun'iy intellekt loyihalari, Qorako'l maktabidagi o'qishi, 2 yillik Telegram biznesi, Taekwondo sovrinlari va Garvard BBA rejalari haqida har qanday savolingizga javob bera olaman!
+          </div>
+          <span class="ai-msg-time">Hozir</span>
+        </div>
+
+        <div class="ai-quick-prompts" id="ai-quick-prompts">
+          <button class="ai-prompt-chip" data-prompt="Muhammadrizo kim va qanday yutuqlari bor?">👤 Muhammadrizo kim?</button>
+          <button class="ai-prompt-chip" data-prompt="Qanday Sun'iy Intellekt loyihalarini yaratgan?">🤖 AI loyihalari</button>
+          <button class="ai-prompt-chip" data-prompt="2 yillik Telegram biznes tajribasi haqida so'zlab ber">💼 2 yillik biznes</button>
+          <button class="ai-prompt-chip" data-prompt="Garvard BBA va kelajak rejalari qanday?">🇺🇸 Garvard BBA</button>
+          <button class="ai-prompt-chip" data-prompt="Muhammadrizo bilan qanday bog'lansam bo'ladi?">📞 Aloqa</button>
+        </div>
+      </div>
+
+      <form class="floating-ai-footer" id="floating-ai-form">
+        <input type="text" class="floating-ai-input" id="floating-ai-input" placeholder="Savol yoki buyruq yozing..." autocomplete="off">
+        <button type="submit" class="floating-ai-send" id="floating-ai-send-btn" aria-label="Yuborish">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
     </div>
   </div>
 

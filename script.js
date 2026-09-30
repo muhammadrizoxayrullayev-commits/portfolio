@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initStatsCounter();
   initPortfolioFilter();
   initAITerminal();
+  initFloatingAIChat();
   initPitchDeckSystem();
   initInlineDeckSystem();
   initQASystem();
@@ -816,27 +817,45 @@ function initAITerminal() {
   });
 
   if (form && input) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const val = input.value.trim();
       if (!val) return;
       playCyberSound('beep');
 
-      const lower = val.toLowerCase();
-      let reply = '';
+      typeOutput(`[VERCEL AI: Qidirilmoqda... ⏳]\n> Savol: "${escapeHTML(val)}"\n> Sun'iy intellekt tahlili bajarilmoqda...`);
 
-      if (lower.includes('ai') || lower.includes('sun\'iy') || lower.includes('bot') || lower.includes('proyekt')) {
-        reply = responses.agents;
-      } else if (lower.includes('biznes') || lower.includes('savdo') || lower.includes('pul') || lower.includes('telegram')) {
-        reply = responses.business;
-      } else if (lower.includes('harvard') || lower.includes('garvard') || lower.includes('universitet') || lower.includes('oqish')) {
-        reply = responses.harvard;
-      } else if (lower.includes('sport') || lower.includes('taekwondo') || lower.includes('robot')) {
-        reply = responses.discipline;
-      } else if (lower.includes('kim') || lower.includes('haqida') || lower.includes('salom')) {
-        reply = responses.profile;
-      } else {
-        reply = `[SO'ROV QABUL QILINDI: "${escapeHTML(val)}"]
+      let reply = '';
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: val })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.reply) {
+            reply = `[VERCEL AI: ${data.model || 'ONLINE'}]\n--------------------------------------------------\n${data.reply}`;
+          }
+        }
+      } catch (err) {
+        console.log('Vercel API offline or GitHub Pages mode:', err);
+      }
+
+      if (!reply) {
+        const lower = val.toLowerCase();
+        if (lower.includes('ai') || lower.includes('sun\'iy') || lower.includes('bot') || lower.includes('proyekt') || lower.includes('agent')) {
+          reply = responses.agents;
+        } else if (lower.includes('biznes') || lower.includes('savdo') || lower.includes('pul') || lower.includes('telegram')) {
+          reply = responses.business;
+        } else if (lower.includes('harvard') || lower.includes('garvard') || lower.includes('universitet') || lower.includes('oqish')) {
+          reply = responses.harvard;
+        } else if (lower.includes('sport') || lower.includes('taekwondo') || lower.includes('robot')) {
+          reply = responses.discipline;
+        } else if (lower.includes('kim') || lower.includes('haqida') || lower.includes('salom')) {
+          reply = responses.profile;
+        } else {
+          reply = `[SO'ROV QABUL QILINDI: "${escapeHTML(val)}"]
 --------------------------------------------------
 Assalomu alaykum! Muhammadrizo Xayrullayev bilan bog'liq har qanday savolingiz bo'yicha:
 - Yuqoridagi tezkor buyruqlarni bosishingiz mumkin.
@@ -844,6 +863,7 @@ Assalomu alaykum! Muhammadrizo Xayrullayev bilan bog'liq har qanday savolingiz b
 - Shuningdek, Telegram orqali (@suxbz) bevosita bog'lanishingiz mumkin!
 --------------------------------------------------
 > Muhammadrizo AI tizimi har doim xizmatingizda!`;
+        }
       }
 
       typeOutput(reply);
@@ -1150,6 +1170,172 @@ function initInlineDeckSystem() {
   // Set initial state
   window.setInlineDeckSlide(0);
 }
+
+/* ==========================================================================
+   11. ESCAPE HTML HELPER
+   ========================================================================== */
+function escapeHTML(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+/* ==========================================================================
+   12. VERCEL AI FLOATING CHATBOT CONTROLLER
+   ========================================================================== */
+function initFloatingAIChat() {
+  const trigger = document.getElementById('floating-ai-trigger');
+  const modal = document.getElementById('floating-ai-modal');
+  const closeBtn = document.getElementById('floating-ai-close-btn');
+  const clearBtn = document.getElementById('ai-chat-clear-btn');
+  const form = document.getElementById('floating-ai-form');
+  const input = document.getElementById('floating-ai-input');
+  const body = document.getElementById('floating-ai-body');
+  const quickPrompts = document.querySelectorAll('.ai-prompt-chip');
+
+  if (!trigger || !modal) return;
+
+  function toggleModal(open) {
+    const isOpen = open !== undefined ? open : !modal.classList.contains('open');
+    if (isOpen) {
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      playCyberSound('click');
+      if (input) setTimeout(() => input.focus(), 200);
+    } else {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  trigger.addEventListener('click', () => toggleModal());
+  if (closeBtn) closeBtn.addEventListener('click', () => toggleModal(false));
+
+  // Close when clicking outside
+  document.addEventListener('click', (e) => {
+    if (modal.classList.contains('open') && 
+        !modal.contains(e.target) && 
+        !trigger.contains(e.target)) {
+      toggleModal(false);
+    }
+  });
+
+  // Clear chat
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      body.innerHTML = `
+        <div class="ai-msg ai-msg-bot">
+          <div class="ai-msg-bubble">
+            Suhbat tarixi tozalandi. Muhammadrizo Xayrullayev haqida qanday savolingiz bor?
+          </div>
+          <span class="ai-msg-time">Hozir</span>
+        </div>
+      `;
+      playCyberSound('click');
+    });
+  }
+
+  // Quick chips
+  quickPrompts.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const p = chip.getAttribute('data-prompt');
+      if (p) {
+        handleUserMessage(p);
+      }
+    });
+  });
+
+  // Form submit
+  if (form && input) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const val = input.value.trim();
+      if (!val) return;
+      handleUserMessage(val);
+      input.value = '';
+    });
+  }
+
+  async function handleUserMessage(userText) {
+    playCyberSound('beep');
+    appendMessage(userText, 'user');
+
+    // Add typing indicator
+    const typingIndicator = document.createElement('div');
+    typingIndicator.className = 'ai-typing-indicator';
+    typingIndicator.innerHTML = `
+      <div class="ai-typing-dot"></div>
+      <div class="ai-typing-dot"></div>
+      <div class="ai-typing-dot"></div>
+    `;
+    body.appendChild(typingIndicator);
+    body.scrollTop = body.scrollHeight;
+
+    let aiReply = '';
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: userText })
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.reply) {
+          aiReply = data.reply;
+        }
+      }
+    } catch (err) {
+      console.log('Vercel AI fetch error (fallback used):', err);
+    }
+
+    if (!aiReply) {
+      // Offline fallback
+      const lower = userText.toLowerCase();
+      if (lower.includes('kim') || lower.includes('haqida')) {
+        aiReply = "Muhammadrizo Xayrullayev — 16 yoshli iqtidorli AI dasturchi, Qorako'l maktabi 10-sinf o'quvchisi, 2 yillik Telegram biznes egasi va Taekwondo chempionat sovrindoridir. U Harvard BBA ga kirishni maqsad qilgan!";
+      } else if (lower.includes('ai') || lower.includes('loyiha') || lower.includes('bot')) {
+        aiReply = "Muhammadrizo ko'p agentli sun'iy intellekt tizimlari (LangChain, LLM), YOLOv8 kompyuter ko'rishi, Whisper ovozli modeli va Telegram savdo botlarini muvaffaqiyatli ishlab chiqqan.";
+      } else if (lower.includes('biznes') || lower.includes('savdo')) {
+        aiReply = "U 2024-yildan buyon Telegram platformasida e-commerce biznes tizimini yuritib, buyurtmalar, CRM va mijozlar xaridlarini to'liq avtomatlashtirib kelmoqda.";
+      } else if (lower.includes('harvard') || lower.includes('garvard')) {
+        aiReply = "Muhammadrizoning asosiy maqsadi — Harvard Business School (BBA) ga kirish, global miqyosda AI loyihalarini rivojlantirish va xalqaro venchur startap fondiga asos solishdir.";
+      } else if (lower.includes('aloqa') || lower.includes('telegram')) {
+        aiReply = "Muhammadrizo bilan to'g'ridan-to'g'ri Telegram orqali bog'lanishingiz mumkin: @suxbz";
+      } else {
+        aiReply = `Assalomu alaykum! Sizning so'rovingiz qabul qilindi. Muhammadrizo Xayrullayev bilan bog'liq har qanday savolingiz bo'yicha Telegram (@suxbz) orqali ham bevosita bog'lanishingiz mumkin!`;
+      }
+    }
+
+    // Remove typing indicator and append bot reply
+    typingIndicator.remove();
+    appendMessage(aiReply, 'bot');
+    playCyberSound('click');
+  }
+
+  function appendMessage(text, sender) {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `ai-msg ai-msg-${sender}`;
+
+    const bubble = document.createElement('div');
+    bubble.className = 'ai-msg-bubble';
+    bubble.innerHTML = escapeHTML(text).replace(/\n/g, '<br>');
+
+    const time = document.createElement('span');
+    time.className = 'ai-msg-time';
+    const now = new Date();
+    time.textContent = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+
+    msgDiv.appendChild(bubble);
+    msgDiv.appendChild(time);
+    body.appendChild(msgDiv);
+    body.scrollTop = body.scrollHeight;
+  }
+}
+
 
 
 

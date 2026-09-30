@@ -1,0 +1,21 @@
+{
+  "name": "muhammadrizo-portfolio",
+  "version": "2.0.0",
+  "description": "Muhammadrizo Xayrullayev - Official Portfolio with Vercel AI & Interactive Terminal",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "portfolio",
+    "ai",
+    "vercel",
+    "langchain",
+    "developer",
+    "muhammadrizo"
+  ],
+  "author": "Muhammadrizo Xayrullayev",
+  "license": "MIT"
+}
