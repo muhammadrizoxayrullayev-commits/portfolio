@@ -12,3 +12,5 @@ $RECYCLE.BIN/
 # Logs and runtime artifacts
 *.log
 *.tmp
+
+.vercel

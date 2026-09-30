@@ -15,8 +15,11 @@ git add .
 set commit_msg=Update portfolio - %date% %time%
 git commit -m "%commit_msg%" > nul 2>&1
 echo.
-echo [3/3] GitHub global serveriga yuklanmoqda (push)...
+echo [3/4] GitHub global serveriga yuklanmoqda (push)...
 git push origin master
+echo.
+echo [4/4] Vercel Serverless AI tizimiga joylashtirilmoqda (deploy)...
+call vercel.cmd --prod --yes > nul 2>&1
 if %ERRORLEVEL% EQU 0 (
     echo.
     echo ================================================================
@@ -28,7 +31,7 @@ if %ERRORLEVEL% EQU 0 (
     echo       👉 https://muhammadrizoxayrullayev-commits.github.io/portfolio/
     echo.
     echo    2. Vercel (Jonli Vercel AI bilan):
-    echo       👉 https://vercel.com/ (Loyiha bog'langandan so'ng avtomatik)
+    echo       👉 https://muhammadrizo-portfolio.vercel.app/
     echo ================================================================
 ) else (
     echo.
